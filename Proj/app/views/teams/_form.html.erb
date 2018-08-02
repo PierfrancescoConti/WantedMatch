@@ -1,0 +1,79 @@
+
+<div class="foto" name="foto" id="foto">
+
+		</div>
+		<div class="pnlsf" align="center">
+
+			<div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Stemma </button>
+				<span class="popuptext" id="myPopup">Questi sono gli stemmi!
+					<div class="scatola" align="center">
+					<table>
+					<tr>
+						<td>
+							<div class="squadra"><img class="stemma" src="../Immagini/Stemmi/Barcellona.jpg" onclick="settaStemmaB()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="../Immagini/Stemmi/Real_Madrid.jpg"  onclick="settaStemmaRM()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="../Immagini/Stemmi/Juve.jpg"  onclick="settaStemmaJ()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="../Immagini/Stemmi/Roma.jpg"  onclick="settaStemmaR()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="../Immagini/Stemmi/Napoli.jpg"  onclick="settaStemmaN()"></img></div>
+						</td>
+					</tr>
+					</table>
+					</div>
+				</span>
+			</div>
+		</div>
+    <%= form_with(model: team, local: true) do |form| %>
+      <% if team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+          <ul>
+          <% team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+		<div class="main-pnl" align="center">
+
+      <div class="field">
+        <h2><b id="w2"> Nome</b></h2><br>
+        <%= form.text_field :name, id: :team_name, placeholder: "Nome Team" %>
+      </div><br><br><br><br><br><br><br><br>
+
+		  <h2><b id="w2"> Membri</b></h2><br>
+		  <div class="box">
+		  <div class="box-inner">
+				<table>
+          <tr><%= form.text_field :g1, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g2, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g3, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g4, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g5, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g6, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g7, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g8, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g9, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g10, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+          <tr><%= form.text_field :g11, id: :g, class: :addPlayer, placeholder: "Aggiungi Giocatore" %>
+
+				</table>
+		  </div>
+		  </div>
+		  <br><br>
+
+      <%= text_field_tag :captain, nil, class: 'hidden', value: User.find(session[:user_id]).usname %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

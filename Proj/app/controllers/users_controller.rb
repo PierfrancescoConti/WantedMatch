@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user[:friends]=[]
+    @user[:teams]=[]
 
     respond_to do |format|
       if @user.save
@@ -69,33 +69,33 @@ class UsersController < ApplicationController
 
   end
 
-  def remove_friend1
+  def remove_team1
     username=params['usname']
     @u=User.find(session[:user_id])
-    @arr=@u[:friends]
+    @arr=@u[:teams]
     @arr.delete(username)
-    @u[:friends]= @arr
+    @u[:teams]= @arr
     @u.save
     redirect_to User.find_by(usname: username)
   end
-  def remove_friend2
+  def remove_team2
     username=params['usname']
     @u=User.find(session[:user_id])
-    @arr=@u[:friends]
+    @arr=@u[:teams]
     @arr.delete(username)
-    @u[:friends]= @arr
+    @u[:teams]= @arr
     @u.save
     redirect_to @u
   end
-  def add_friend
+  def add_team
     username=params['usname']
     @u=User.find(session[:user_id])
-    @arr=@u[:friends]
+    @arr=@u[:teams]
     if @arr.include?(username)
     else
       @arr.push(username)
     end
-    @u[:friends]= @arr
+    @u[:teams]= @arr
     @u.save
     redirect_to User.find_by(usname: username)
   end

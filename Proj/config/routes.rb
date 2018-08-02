@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
 
 
-  get 'friend/new'
+  resources :teams
+  get 'team/new'
 
-  get 'friend/create'
+  get 'team/create'
 
   resources :users
   controller :sessions do
@@ -25,9 +26,9 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   get 'users/profile', to: 'users#profile', as: 'profile'
-  post 'add_friend', to: 'users#add_friend', as: 'add_friend'
-  post 'remove_friend1', to: 'users#remove_friend1', as: 'remove_friend1'
-  post 'remove_friend2', to: 'users#remove_friend2', as: 'remove_friend2'
+  post 'add_team', to: 'users#add_team', as: 'add_team'
+  post 'remove_team1', to: 'users#remove_team1', as: 'remove_team1'
+  post 'remove_team2', to: 'users#remove_team2', as: 'remove_team2'
 
 
   post 'search', to: 'users#search', as: 'search'
