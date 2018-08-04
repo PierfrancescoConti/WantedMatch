@@ -1,0 +1,112 @@
+
+<div class="foto" name="foto" id="foto">
+
+		</div>
+		<div class="pnlsf" align="center">
+
+			<div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Stemma </button>
+				<span class="popuptext" id="myPopup">Questi sono gli stemmi!
+					<div class="scatola" align="center">
+					<table>
+					<tr>
+						<td>
+							<div class="squadra"><img class="stemma" src="Barcellona.jpg" onclick="settaStemmaB()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="Real_Madrid.jpg"  onclick="settaStemmaRM()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="Juve.jpg"  onclick="settaStemmaJ()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="Roma.jpg"  onclick="settaStemmaR()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="Napoli.jpg"  onclick="settaStemmaN()"></img></div>
+						</td>
+					</tr>
+					</table>
+					</div>
+				</span>
+			</div>
+		</div>
+    <%= form_with(model: team, local: true) do |form| %>
+      <% if team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+          <ul>
+          <% team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+		<div class="main-pnl" align="center">
+			<br><br><br>
+			<br><br><br>
+
+      <div class="field">
+        <h2><b id="w2"> Nome</b></h2><br>
+        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 50%; margin-top: 2%;' %>
+      </div><br><br><br><br><br><br><br>
+
+			<h2><b id="w2"> Membri</b></h2><br>
+		  <div class="box" style="height: 300px;width: 50%;">
+		  <div class="box-inner" style="width: 50%;">
+				<table>
+					<% @team[:members].each do |element| %>
+			    <h3 style="margin-top: 3px;">
+			      <td><%= form_tag action: 'remove_member', controller: 'teams' do %>
+			        <%= element %><%= text_field_tag :usname, nil, class: 'hidden', value: element %>
+			          <% if User.find(session[:user_id])==@user %>
+
+			            <%= submit_tag 'Remove', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
+			        <% end %>
+			      <% end %>
+			    </td>
+			    </h3>
+			    <% end %>
+				</table>
+		  </div>
+		  </div>
+
+		  <br>
+
+			<h2><b id="w2"> Richieste</b></h2><br>
+		 <div class="box" style="height: 300px;width: 60%; margin-left: 200px;">
+		 <div class="box-inner" style="width: 50%;">
+			 <table>
+
+				 <% @team[:requests].each do |element| %>
+				 <h3 style="margin-top: 3px;">
+					 <td><%= form_tag action: 'refuse_member', controller: 'teams' do %>
+						 <%= form_tag action: 'accept_member', controller: 'teams' do %>
+						 		 <%= element %> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>
+								 <%= submit_tag 'Accept', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
+					 	 <% end %>
+					 	<%= submit_tag 'Refuse', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
+					 <% end %>
+				 </td>
+				 </h3>
+				 <% end %>
+
+			 </table>
+		 </div>
+		 </div>
+
+		 <br><br>
+
+      <%= form.text_field :captain, class: 'hidden', value: User.find(session[:user_id]).usname %>
+
+  <div class="actions">
+		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%;'}) %>
+
+  </div>
+<% end %>
+<br><br><br>
+<%= form_tag action: 'elimina_team', controller: 'teams' do %>
+		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :nome, nil, class: 'hidden', value: @team.name %>  <!-- CERCA UTENTI -->
+<% end %>
+<br><br><br>

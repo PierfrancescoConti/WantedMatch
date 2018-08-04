@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20180802150949) do
   create_table "teams", force: :cascade do |t|
     t.string "logo"
     t.string "name"
-    t.string "members"
+    t.string "members", default: [], array: true
+    t.string "requests", default: [], array: true
     t.string "captain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

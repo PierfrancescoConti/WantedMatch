@@ -35,6 +35,7 @@ class TeamsController < ApplicationController
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
+    User.find(session[:user_id])[:teams].push(@team[:name])
   end
 
   # PATCH/PUT /teams/1
@@ -59,6 +60,42 @@ class TeamsController < ApplicationController
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def remove_member
+    username=params['usname']
+    @arr=@team[:members]
+    @arr.delete(username)
+    @team[:members]= @arr
+    @team.save
+    redirect_to edit_team_path
+  end
+
+  def accept_member
+    username=params['usname']
+    @mem=@team[:members]
+    @req=@team[:requests]
+    @req.delete(username)
+    @mem.add(username)
+    @team[:members]= @mem
+    @team[:requests]= @req
+    @team.save
+    redirect_to edit_team_path
+  end
+
+  def refuse_member
+    username=params['usname']
+    @req=@team[:requests]
+    @req.delete(username)
+    @team[:requests]= @req
+    @team.save
+    redirect_to edit_team_path
+  end
+
+  def elimina_team
+    nome=params['nome']
+    Team.find_by(:name => nome).destroy
+    redirect_to User.find(session[:user_id])
   end
 
 

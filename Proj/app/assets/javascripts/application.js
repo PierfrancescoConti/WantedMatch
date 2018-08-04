@@ -14,37 +14,37 @@
 //= require turbolinks
 //= require_tree .
 
-var global_stemma= "../Immagini/Stemmi/punto-interrogativo.png";
+var global_stemma= "punto-interrogativo.png";
 
 
 function settaStemmaB(){
-	var s='<img name="stemma" src="../Immagini/Stemmi/Barcellona.jpg" value="Barcellona" height=200 width=200></img>';
+	var s='<img name="stemma" src="Barcellona.jpg" value="Barcellona" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	global_stemma= "../Immagini/Stemmi/Barcellona.jpg";
+	global_stemma= "Barcellona.jpg";
 }
 
 function settaStemmaRM(){
-	var s='<img src="../Immagini/Stemmi/Real_Madrid.jpg" value="Real_Madrid" height=200 width=200></img>';
+	var s='<img src="Real_Madrid.jpg" value="Real_Madrid" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	global_stemma= "../Immagini/Stemmi/Real_Madrid.jpg";
+	global_stemma= "Real_Madrid.jpg";
 }
 
 function settaStemmaJ(){
-	var s='<img src="../Immagini/Stemmi/Juve.jpg" value="Juve" height=200 width=200></img>';
+	var s='<img src="Juve.jpg" value="Juve" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	global_stemma= "../Immagini/Stemmi/Juve.jpg";
+	global_stemma= "Juve.jpg";
 }
 
 function settaStemmaR(){
-	var s='<img src="../Immagini/Stemmi/Roma.jpg" value="Roma" height=200 width=200></img>';
+	var s='<img src="Roma.jpg" value="Roma" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	global_stemma= "../Immagini/Stemmi/Roma.jpg";
+	global_stemma= "Roma.jpg";
 }
 
 function settaStemmaN(){
 	var s='<img src="../Immagini/Stemmi/Napoli.jpg" value="Napoli" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	global_stemma= "../Immagini/Stemmi/Napoli.jpg";
+	global_stemma= "Napoli.jpg";
 }
 
 //POPUP

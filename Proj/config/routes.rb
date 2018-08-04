@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post 'add_team', to: 'users#add_team', as: 'add_team'
   post 'remove_team1', to: 'users#remove_team1', as: 'remove_team1'
   post 'remove_team2', to: 'users#remove_team2', as: 'remove_team2'
+  post 'elimina_team', to: 'teams#elimina_team', as: 'elimina_team'
 
 
   post 'search', to: 'users#search', as: 'search'
