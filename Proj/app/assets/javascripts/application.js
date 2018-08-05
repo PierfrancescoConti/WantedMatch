@@ -47,6 +47,17 @@ function settaStemmaN(){
 	global_stemma= "Napoli.jpg";
 }
 
+// CHOOSE TEAM
+
+function choose_team(id){
+	var s='Choosen team: ';
+	s=s+id;
+	document.getElementById("mess").innerHTML = s;
+	document.getElementById("match_team1").value = id;
+}
+
+
+
 //POPUP
 function popup() {
     var popup = document.getElementById("myPopup");

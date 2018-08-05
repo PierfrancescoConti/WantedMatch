@@ -39,7 +39,7 @@
 
     <h3 style="margin-top: 3px;">
       <% if User.find(session[:user_id])[:usname]==element[:captain] %>
-      <td><!--<%= image_tag(element[:logo]) %>--><%= element[:name] %><%= link_to 'Show', Team.find_by(:name => element[:name]), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+      <td><%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
     </td>
     <% end %>
 

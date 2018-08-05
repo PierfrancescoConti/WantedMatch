@@ -1,0 +1,62 @@
+
+  <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
+    <span class="popuptext" id="myPopup">Questi sono i tuoi Teams!
+      <div class="scatola" align="center">
+      <table>
+        <% Team.all.each do |element| %>
+
+          <h3 style="margin-top: 3px;">
+          <% if User.find(session[:user_id])[:usname]==element[:captain] %>
+
+            <tr><%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px;'%>
+
+              <%= button_tag 'Choose', onclick: 'choose_team(' + element[:id].to_s + ')', class: 'btn btn-default', style: 'position: absolute; right: 3px; background-color: green; color: white;' %>
+            </tr>
+          <% end %>
+
+          </h3>
+        <% end %>
+      </table>
+      </div>
+    </span>
+  </div>
+  <label id="mess"> </label><br>
+
+
+<%= form_with(model: match, local: true) do |form| %>
+  <% if match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.text_field :team1, id: :match_team1, class: 'hidden'%>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :match_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.time_select :time, id: :match_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :match_date %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :matches
   resources :teams
   get 'team/new'
 
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   post 'remove_team1', to: 'users#remove_team1', as: 'remove_team1'
   post 'remove_team2', to: 'users#remove_team2', as: 'remove_team2'
   post 'elimina_team', to: 'teams#elimina_team', as: 'elimina_team'
+  post 'choose_team', to: 'matches#choose_team', as: 'choose_team'
 
 
   post 'search', to: 'users#search', as: 'search'
