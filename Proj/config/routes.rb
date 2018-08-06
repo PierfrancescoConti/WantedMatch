@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-
-
   resources :matches
   resources :teams
+
   get 'team/new'
 
   get 'team/create'
@@ -14,8 +13,6 @@ Rails.application.routes.draw do
       post 'login' => :create
       delete 'logout' => :destroy
   end
-
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#homepage'
@@ -32,6 +29,10 @@ Rails.application.routes.draw do
   post 'remove_team2', to: 'users#remove_team2', as: 'remove_team2'
   post 'elimina_team', to: 'teams#elimina_team', as: 'elimina_team'
   post 'choose_team', to: 'matches#choose_team', as: 'choose_team'
+  post 'send_request', to: 'teams#send_request', as: 'send_request'
+  post 'leave_team', to: 'teams#leave_team', as: 'leave_team'
+  post 'refuse_member', to: 'teams#refuse_member', as: 'refuse_member'
+  post 'accept_member', to: 'teams#accept_member', as: 'accept_member'
 
 
   post 'search', to: 'users#search', as: 'search'

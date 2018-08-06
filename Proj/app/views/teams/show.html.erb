@@ -6,19 +6,49 @@
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @team.name %>
+  <div class="field">
+    <h2><b id="w2"> Name:</b></h2><br>
+    <h2><i id="w" style="margin-left: 15%;"> <%= @team.name %></i></h2><br>
+  </div><br><br><br>
 </p>
 
 <p>
-  <strong>Members:</strong>
-  <%= @team.members %>
+  <h2><b id="w2"> Members:</b></h2><br>
+  <% if User.find(session[:user_id]).usname!=@team.captain and !(@team[:members].include? User.find(session[:user_id]).usname) and !(@team[:requests].include? User.find(session[:user_id]).usname) %>
+    <%= form_tag action: 'send_request', controller: 'teams' do %>
+      <%= submit_tag 'Join Team', class: 'btn btn-default', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px; border-color: black;' %>
+      <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
+    <% end %>
+  <% end %>
+
+  <div class="box" style="height: 300px;width: 50%; margin-left: 25%;">
+  <div class="box-inner" style="width: 50%;">
+    <table>
+      <% @team[:members].each do |element| %>
+      <h3 style="margin-top: 3px;">
+        <td>
+          <%= element %>
+        </td>
+      </h3>
+      <% end %>
+    </table>
+  </div>
+  </div>
 </p>
 
 <p>
-  <strong>Captain:</strong>
-  <%= @team.captain %>
+  <h2><b id="w2"> Captain:</b></h2><br>
+  <h2><i id="w" style="margin-left: 15%;"> <%= @team.captain %></i></h2><br>
+  </div><br><br><br>
 </p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<% if User.find(session[:user_id]).usname==@team.captain %>
+  <%= link_to 'Edit Team', edit_team_path(@team), class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 30%; color: white; width: 150px;' %>
+  <%= link_to 'Create Match', new_match_path, class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px;' %>
+<% else %>
+  <% if @team[:members].include? User.find(session[:user_id]).usname %>
+    <%= form_tag action: 'leave_team', controller: 'teams' do %>
+      <%= submit_tag 'Leave Team', class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 30%; color: white; width: 150px; background-color: red;' %>
+      <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
+    <% end %>
+  <% end %>
+<% end %>

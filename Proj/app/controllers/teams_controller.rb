@@ -25,6 +25,8 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
+    @team[:members]=[]
+    @team[:requests]=[]
 
     respond_to do |format|
       if @team.save
@@ -72,30 +74,64 @@ class TeamsController < ApplicationController
   end
 
   def accept_member
+    idteam=params['idteam']
     username=params['usname']
-    @mem=@team[:members]
-    @req=@team[:requests]
+    @t=Team.find(idteam)
+    @mem=@t[:members]
+    @req=@t[:requests]
     @req.delete(username)
-    @mem.add(username)
-    @team[:members]= @mem
-    @team[:requests]= @req
-    @team.save
-    redirect_to edit_team_path
+    @mem.push(username)
+    @t[:members] = @mem
+    @t[:requests] = @req
+    @t.save
+    redirect_to Team.find(idteam)
+    flash[:notice] = "Hai accettato '"+username.to_s+"'"
+
   end
 
   def refuse_member
+    idteam=params['idteam']
     username=params['usname']
-    @req=@team[:requests]
+    @t=Team.find(idteam)
+    @req=@t[:requests]
     @req.delete(username)
-    @team[:requests]= @req
-    @team.save
-    redirect_to edit_team_path
+    @t[:requests]= @req
+    @t.save
+    redirect_to Team.find(idteam)
+    flash[:notice] = "Hai rifiutato '"+username.to_s+"'"
+
   end
 
   def elimina_team
-    nome=params['nome']
+    nome=params['nome']    #da cambiare, da eliminare attraverso l'id, perchè ci possono essere due team con lo stesso nome
     Team.find_by(:name => nome).destroy
     redirect_to User.find(session[:user_id])
+  end
+
+  def send_request
+    idteam=params['idteam']
+    usname=User.find(session[:user_id]).usname
+    @t=Team.find(idteam)
+    @req=@t[:requests]
+    @req.push(usname)
+    @t[:requests]=@req
+    @t.save
+
+    redirect_to @t
+    flash[:notice] = "Inviata la richiesta di partecipazione al Team '"+@t.name.to_s+"'"
+  end
+
+  def leave_team
+    idteam=params['idteam']
+    usname=User.find(session[:user_id]).usname
+    @t=Team.find(idteam)
+    @mem=@t[:members]
+    @mem.delete(usname)
+    @t[:members]=@mem
+    @t.save
+
+    redirect_to @t
+    flash[:notice] = "Sei uscito dal Team '"+@t.name.to_s+"'"
   end
 
 
