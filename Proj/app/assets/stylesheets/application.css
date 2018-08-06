@@ -103,3 +103,26 @@
   background-size: 105%;
   background-position: 0 -1px;
 }
+
+
+.scatola{
+	width: 84%;
+	margin-left: 8%;
+	height: auto;
+	border: 1px solid;
+}
+
+.squadra{
+	width: 70px;
+	height: 70px;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	border: 1px solid;
+}
+
+
+.stemma{
+	height: 70px;
+	width: 70px;
+}
