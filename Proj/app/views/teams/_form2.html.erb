@@ -122,6 +122,6 @@
 <br><br><br>
 
 <%= form_tag action: 'elimina_team', controller: 'teams' do %>
-		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :nome, nil, class: 'hidden', value: @team.name %>  <!-- CERCA UTENTI -->
+		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :idteam, nil, class: 'hidden', value: @team.id %>  <!-- CERCA UTENTI -->
 <% end %>
 <br><br><br>

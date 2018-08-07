@@ -103,8 +103,8 @@ class TeamsController < ApplicationController
   end
 
   def elimina_team
-    nome=params['nome']    #da cambiare, da eliminare attraverso l'id, perchè ci possono essere due team con lo stesso nome
-    Team.find_by(:name => nome).destroy
+    idteam=params['idteam']   
+    Team.find(idteam).destroy
     redirect_to User.find(session[:user_id])
   end
 

@@ -1,0 +1,43 @@
+<div class="mainpnl" align="center">
+  <div class="sxpnl">
+    <br>
+    <h2> Team: </h2><br>
+    <% $arrt.each do |element| %>
+
+    <h4 style="margin-top: 3px;">
+      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%>        
+          <%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+    </td>
+    <% end %>
+    <br><br>
+    </h4>
+  </div>
+
+
+  <div class="dxpnl">
+    <br>
+    <h2> Annunci: </h2><br>
+    <% $arrm.each do |element| %>
+      <div class="box" style= "height: 320px; width: 80%;">
+        <h4 style="margin-top: 3px;">
+          <table>
+        <%= element[:location] %><br>
+        <%= element[:date] %><br>
+        <%= element[:time] %><br>
+        <%= image_tag(Team.find(element[:team1]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team1]).name %><br>
+        <% if element[:team2]==nil %>
+          <b> Cercasi Team sfidante </b><br>
+        <% else %>
+        <%= image_tag(Team.find(element[:team2]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team2]).name %><br>
+        <% end %>
+
+        <td>
+          <%= link_to 'Show', Match.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+        </td>
+      </table>
+      </div>
+    <% end %>
+    <br><br>
+    </h4>
+  </div>
+</div>

@@ -64,9 +64,27 @@ class MatchesController < ApplicationController
   def choose_team
     id=params['id']
     flash[:notice]="Choosen team"
-    flash[:notice]=Team.find(id).name 
+    flash[:notice]=Team.find(id).name
 
   end
+
+  def select_team
+    idmatch=params['idmatch']
+    idteam=params['idteam']
+    @match=Match.find(idmatch)
+    @match[:team2]=idteam
+    @match.save
+    redirect_to User.find(session[:user_id])
+    flash[:notice]="Trovata squadra sfidante!"
+    #aggiungere google calendar
+  end
+
+  def elimina_match
+    idmatch=params['idmatch']
+    Match.find(idmatch).destroy
+    redirect_to User.find(session[:user_id])
+  end
+
 
 
   private

@@ -3,18 +3,19 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+
+
+
+
   protected
   def authorize
       unless User.find_by(id: session[:user_id])
-        redirect_to login_url, alert: "You thought you could gain unauthorised access? LOL"
+        redirect_to login_url, alert: "Non sei autorizzato, esegui prima il login"
       end
   end
 
-  
 
-  def search
-    username=params['usname']
-    @user=User.find_by(usname: username)
-    redirect_to user_url(@user)
-  end
+
+
 end

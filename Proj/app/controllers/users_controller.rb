@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    
+
   end
 
   # GET /users/new
@@ -102,12 +102,26 @@ class UsersController < ApplicationController
   end
 
   def search
-    username=params['usname']
-    @user=User.find_by(usname: username)
-    if @user
-      redirect_to user_url(@user)
-    end
   end
+
+  def searchtm
+    campo=params['campo']
+    $arrt=[]
+    $arrm=[]
+    Team.all.each do |element|
+      if element[:name].include? campo
+        $arrt.push(element)
+      end
+    end
+    Match.all.each do |element|
+      if element[:location].include? campo
+        $arrm.push(element)
+      end
+    end
+
+    redirect_to search_url
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
