@@ -1,35 +1,4 @@
 
-<div class="foto" name="foto" id="foto">
-
-		</div>
-		<div class="pnlsf" align="center">
-
-			<div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Stemma </button>
-				<span class="popuptext" id="myPopup">Questi sono gli stemmi!
-					<div class="scatola" align="center">
-					<table>
-					<tr>
-						<td>
-							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/0/07/Fc_barcelona.png" onclick="settaStemmaB()"></img></div>
-						</td>
-						<td>
-							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/thumb/0/0c/Real_Madrid_CF_logo.svg/732px-Real_Madrid_CF_logo.svg.png"  onclick="settaStemmaRM()"></img></div>
-						</td>
-						<td>
-							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Juventus_FC_2017_logo_%28negative%29.jpg"  onclick="settaStemmaJ()"></img></div>
-						</td>
-						<td>
-							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/0/0e/AS_Roma_Logo_2017.svg"  onclick="settaStemmaR()"></img></div>
-						</td>
-						<td>
-							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/S.S.C._Napoli_logo.svg/1024px-S.S.C._Napoli_logo.svg.png"  onclick="settaStemmaN()"></img></div>
-						</td>
-					</tr>
-					</table>
-					</div>
-				</span>
-			</div>
-		</div>
     <%= form_with(model: team, local: true) do |form| %>
       <% if team.errors.any? %>
         <div id="error_explanation">
@@ -43,7 +12,7 @@
         </div>
       <% end %>
 
-			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: 'https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg' %> </div>
+			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: @team.logo.to_s %> </div>
 
 		<div class="main-pnl" align="center">
 			<br><br><br>
@@ -74,11 +43,11 @@
 		<% @team[:members].each do |element| %>
 		<h3 style="margin-top: 3px;">
 			<td><%= form_tag action: 'remove_member', controller: 'teams' do %>
-				<%= element %><%= text_field_tag :usname, nil, class: 'hidden', value: element %>
-					<% if User.find(session[:user_id])==@user %>
+				<%= element %>
 
-						<%= submit_tag 'Remove', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
-				<% end %>
+						<%= submit_tag 'Remove', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%>
+            <%= text_field_tag :username, nil, class: 'hidden', value: element %>
+            <%= text_field_tag :idteam, nil, class: 'hidden', value: @team.id %>
 			<% end %>
 		</td>
 		</h3>
@@ -99,15 +68,15 @@
 
 
 			 <%= form_tag action: 'accept_member', controller: 'teams' do %>
-					 <%= text_field_tag :usname, nil, class: 'hidden', value: element %>
+					 <%= text_field_tag :username, nil, class: 'hidden', value: element %>
+           <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 					 <%= submit_tag 'Accept', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
-					 <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 			 <% end %>
 
 			 <%= form_tag action: 'refuse_member', controller: 'teams' do %>
-					 <%= text_field_tag :usname, nil, class: 'hidden', value: element %>
+					 <%= text_field_tag :username, nil, class: 'hidden', value: element %>
+           <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 					 <%= submit_tag 'Refuse', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
-					 <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 			 <% end %>
 
 	 </tr>
@@ -125,3 +94,39 @@
 		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :idteam, nil, class: 'hidden', value: @team.id %>  <!-- CERCA UTENTI -->
 <% end %>
 <br><br><br>
+</div>
+<div class='aSinistra'>
+<div class="foto" name="foto" id="foto">
+  <%= image_tag(@team.logo.to_s, style: 'height: 200px; width: 200px;')%>
+		</div>
+		<div class="pnlsf" align="center">
+
+			<div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Stemma </button>
+				<span class="popuptext" id="myPopup">Questi sono gli stemmi!
+					<div class="scatola" align="center">
+					<table>
+					<tr>
+						<td>
+							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/0/07/Fc_barcelona.png" onclick="settaStemmaB()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/thumb/0/0c/Real_Madrid_CF_logo.svg/732px-Real_Madrid_CF_logo.svg.png"  onclick="settaStemmaRM()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Juventus_FC_2017_logo_%28negative%29.jpg"  onclick="settaStemmaJ()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/it/0/0e/AS_Roma_Logo_2017.svg"  onclick="settaStemmaR()"></img></div>
+						</td>
+						<td>
+							<div class="squadra"><img class="stemma" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/S.S.C._Napoli_logo.svg/1024px-S.S.C._Napoli_logo.svg.png"  onclick="settaStemmaN()"></img></div>
+						</td>
+					</tr>
+					</table>
+					</div>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-pnl hidden" align="center">

@@ -24,6 +24,8 @@
   <strong>Team2:</strong>
   <% if @match.team2==nil %>
     <b> Cercasi Team sfidante </b><br><br>
+    <% if User.find(session[:user_id])[:usname]==Team.find(@match[:team1]).captain %>
+    <% else %>
 
     <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
   <span class="popuptext" id="myPopup">Questi sono i tuoi Teams!
@@ -49,12 +51,14 @@
     </table>
     </div>
   </span>
-</div>
-<label id="mess"> </label><br>
+  </div>
+  <% end %>
 
+  <% if User.find(session[:user_id]).usname==Team.find(@match[:team1])[:captain] %>
     <%= form_tag action: 'elimina_match', controller: 'matches' do %>
     		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>  <!-- CERCA UTENTI -->
     <% end %>
+  <% end %>
 
   <% else %>
     <%= image_tag(Team.find(@match.team2).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%> <%= Team.find(@match.team2)[:name] %>

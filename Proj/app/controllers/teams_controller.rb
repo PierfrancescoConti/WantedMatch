@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery with: :null_session, only: [:edit, :update]
   # GET /teams
   # GET /teams.json
   def index
@@ -65,17 +65,19 @@ class TeamsController < ApplicationController
   end
 
   def remove_member
-    username=params['usname']
-    @arr=@team[:members]
+    username=params['username']
+    idteam=params['idteam']
+    @t=Team.find(idteam)
+    @arr=@t[:members]
     @arr.delete(username)
-    @team[:members]= @arr
-    @team.save
-    redirect_to edit_team_path
+    @t[:members]= @arr
+    @t.save
+    redirect_to edit_team_path(@t)
   end
 
   def accept_member
     idteam=params['idteam']
-    username=params['usname']
+    username=params['username']
     @t=Team.find(idteam)
     @mem=@t[:members]
     @req=@t[:requests]
@@ -84,26 +86,26 @@ class TeamsController < ApplicationController
     @t[:members] = @mem
     @t[:requests] = @req
     @t.save
-    redirect_to Team.find(idteam)
+    redirect_to edit_team_path(@t)
     flash[:notice] = "Hai accettato '"+username.to_s+"'"
 
   end
 
   def refuse_member
     idteam=params['idteam']
-    username=params['usname']
+    username=params['username']
     @t=Team.find(idteam)
     @req=@t[:requests]
     @req.delete(username)
     @t[:requests]= @req
     @t.save
-    redirect_to Team.find(idteam)
+    redirect_to edit_team_path(@t)
     flash[:notice] = "Hai rifiutato '"+username.to_s+"'"
 
   end
 
   def elimina_team
-    idteam=params['idteam']   
+    idteam=params['idteam']
     Team.find(idteam).destroy
     redirect_to User.find(session[:user_id])
   end

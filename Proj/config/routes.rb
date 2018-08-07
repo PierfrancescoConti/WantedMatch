@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post 'send_request', to: 'teams#send_request', as: 'send_request'
   post 'leave_team', to: 'teams#leave_team', as: 'leave_team'
   post 'refuse_member', to: 'teams#refuse_member', as: 'refuse_member'
+  post 'remove_member', to: 'teams#remove_member', as: 'remove_member'
   post 'accept_member', to: 'teams#accept_member', as: 'accept_member'
 
   post 'searchtm', to: 'users#searchtm', as: 'searchtm'

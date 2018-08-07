@@ -1,4 +1,39 @@
 
+    <%= form_with(model: team, local: true) do |form| %>
+      <% if team.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+          <ul>
+          <% team.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: 'https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg' %> </div>
+
+
+		<div class="main-pnl" align="center">
+			<br><br><br>
+			<br><br><br>
+
+      <div class="field">
+        <h2><b id="w2"> Nome</b></h2><br>
+        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 50%; margin-top: 2%;' %>
+      </div><br><br><br><br><br><br><br><br>
+
+		  <br><br>
+
+      <%= form.text_field :captain, class: 'hidden', value: User.find(session[:user_id]).usname %>
+
+  <div class="actions">
+		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%;'}) %><br>
+  </div>
+<% end %>
+</div>
+<div class='aSinistra'>
 <div class="foto" name="foto" id="foto">
 
 		</div>
@@ -30,55 +65,5 @@
 				</span>
 			</div>
 		</div>
-    <%= form_with(model: team, local: true) do |form| %>
-      <% if team.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
-
-          <ul>
-          <% team.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: 'https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg' %> </div>
-
-
-		<div class="main-pnl" align="center">
-			<br><br><br>
-			<br><br><br>
-
-      <div class="field">
-        <h2><b id="w2"> Nome</b></h2><br>
-        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 50%; margin-top: 2%;' %>
-      </div><br><br><br><br><br><br><br><br>
-
-<!--		  <h2><b id="w2"> Membri</b></h2><br>
-		  <div class="box">
-		  <div class="box-inner">
-				<table>
-					<tr><%= form.text_field :g1, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g2, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g3, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g4, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g5, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g6, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-          <tr><%= form.text_field :g7, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g8, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g9, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g10, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-					<tr><%= form.text_field :g11, id: :g,  :class => 'addPlayer form-control', placeholder: "Aggiungi Giocatore", style: 'width: 80%' %>
-				</table>
-		  </div>
-		  </div>
--->
-		  <br><br>
-
-      <%= form.text_field :captain, class: 'hidden', value: User.find(session[:user_id]).usname %>
-
-  <div class="actions">
-		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%;'}) %><br>
-  </div>
-<% end %>
+	</div>
+	<div class="main-pnl  hidden" align="center">

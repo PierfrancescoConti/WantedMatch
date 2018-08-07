@@ -126,3 +126,8 @@
 	height: 70px;
 	width: 70px;
 }
+
+.aSinistra{
+  position: absolute;
+  left: 0px;
+}
