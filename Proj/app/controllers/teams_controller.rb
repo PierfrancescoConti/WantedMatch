@@ -75,6 +75,12 @@ class TeamsController < ApplicationController
     redirect_to edit_team_path(@t)
   end
 
+  def form2
+    idteam=params['idteam']
+    @t=Team.find(idteam)
+    redirect_to edit_team_path(@t)
+  end
+
   def accept_member
     idteam=params['idteam']
     username=params['username']

@@ -41,7 +41,10 @@
   </div><br><br><br>
 </p>
 <% if User.find(session[:user_id]).usname==@team.captain %>
-  <%= link_to 'Edit Team', edit_team_path(@team), class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 30%; color: white; width: 150px;' %>
+<%= form_tag action: 'form2', controller: 'teams' do %>
+  <%= submit_tag 'Edit Team', class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 30%; color: white; width: 150px;' %>
+  <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
+<% end %>
   <%= link_to 'Create Match', new_match_path, class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px;' %>
 <% else %>
   <% if @team[:members].include? User.find(session[:user_id]).usname %>

@@ -5,7 +5,7 @@
     <% $arrt.each do |element| %>
 
     <h4 style="margin-top: 3px;">
-      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%>        
+      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%>
           <%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
     </td>
     <% end %>
@@ -21,6 +21,7 @@
       <div class="box" style= "height: 320px; width: 80%;">
         <h4 style="margin-top: 3px;">
           <table>
+        <%= element[:tipo] %><br>
         <%= element[:location] %><br>
         <%= element[:date] %><br>
         <%= element[:time] %><br>
@@ -32,7 +33,10 @@
         <% end %>
 
         <td>
-          <%= link_to 'Show', Match.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+          <%= form_tag action: 'show_match', controller: 'matches' do %>
+          		<%= submit_tag 'Show', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;' %>
+              <%= text_field_tag :idmatch, nil, class: 'hidden', value: element.id %>
+          <% end %>
         </td>
       </table>
       </div>

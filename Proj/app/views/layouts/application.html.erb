@@ -26,7 +26,7 @@
 
         <%= form_tag action: 'searchtm', controller: 'users' do %>
           <%= text_field_tag :campo, nil, class: 'barra', placeholder: 'Search Teams and Matches...' %>
-          <%= submit_tag "", class: 'search-button' %> <!-- CERCA UTENTI -->
+          <%= submit_tag "", class: 'search-button' %> 
         <% end %>
 
       </div>
@@ -40,6 +40,7 @@
               <%= link_to "Login", login_url %>
               <%= link_to "Logout", sessions_destroy_path %>
               <%= link_to "Create Team", new_team_path %>
+              <%= link_to "Create Match", new_match_path %>
               <%= link_to "Help", help_path %>
             </div>
 			   </div>

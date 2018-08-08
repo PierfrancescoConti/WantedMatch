@@ -4,6 +4,7 @@ class CreateMatches < ActiveRecord::Migration[5.1]
       t.string :location
       t.time :time
       t.date :date
+      t.string :tipo
       t.integer :team1
       t.integer :team2
 

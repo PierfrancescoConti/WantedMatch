@@ -1,28 +1,31 @@
+<div class="container">
 
   <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
-    <span class="popuptext" id="myPopup">Questi sono i tuoi Teams!
-      <div class="scatola" align="center">
+    <span class="popuptext" id="myPopup"><i>Questi sono i tuoi Teams!</i>
+
       <table>
         <% Team.all.each do |element| %>
-
           <h3 style="margin-top: 3px;">
           <% if User.find(session[:user_id])[:usname]==element[:captain] %>
+          <div class="scatola" align="left">
 
-            <tr><%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px;'%>
+            <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -10px; border-radius: 50%;'%>
 
-              <%= button_tag 'Choose', onclick: 'choose_team(' + element[:id].to_s + ')', class: 'btn btn-default', style: 'position: absolute; right: 3px; background-color: green; color: white;' %>
-            </tr>
+              <%= button_tag 'Choose', onclick: 'choose_team(' + element[:id].to_s + ')', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;' %>
+            </tr><br>
+          </div>
           <% end %>
 
           </h3>
         <% end %>
       </table>
-      </div>
+
     </span>
   </div>
   <label id="mess"> </label><br>
+</div>
 
-
+<div align="center">
 <%= form_with(model: match, local: true) do |form| %>
   <% if match.errors.any? %>
     <div id="error_explanation">
@@ -37,16 +40,23 @@
   <% end %>
 
     <%= form.text_field :team1, id: :match_team1, class: 'hidden'%>
+    <div class="field" align="left" style="width: 150px;">
+
+        <%= form.radio_button :tipo, 'calcio a 5' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 5</i><br><br>
+        <%= form.radio_button :tipo, 'calcio a 7' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 7</i><br><br>
+        <%= form.radio_button :tipo, 'calcio a 8' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 8</i><br><br>
+        <%= form.radio_button :tipo, 'calcio a 11' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 11</i><br><br>
+      </div><br>
 
   <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location, id: :match_location %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= form.label :time %>
     <%= form.time_select :time, id: :match_time %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= form.label :date %>
@@ -60,3 +70,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

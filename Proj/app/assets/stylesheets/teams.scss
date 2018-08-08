@@ -121,48 +121,6 @@
 }
 
 
-.addPlayer{
-	padding: 10px;
-	margin-left: 5px;
-	font-size: 17;
-}
-
-
-#squadre{
-	margin-top:20px;
-	margin-left:10%;
-	opacity: 0.9;
-	background-color: #dddddd;
-	width: 80%;
-	height: 100px;
-	border: 1px solid;
-}
-
-.team-box{
-	width: 90px;
-	height: 90px;
-	border-radius: 50%;
-	margin-left: 10px;
-	margin-top: 5px;
-  background-color: #dddddd;
-}
-
-.team{
-	border-radius: 50%;
-	margin-left: -8px;
-	margin-top: -4px;
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,7 +139,7 @@
 .popup .popuptext {
 	  position: absolute;
 	  left: 7%;
-	  top: -170%;
+	  top: 100%;
     width: 60%;
     background-color: #555;
     color: #fff;
@@ -196,12 +154,12 @@
 .popup .popuptext::after {
     content: "";
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     left: 5%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: transparent transparent #555 transparent;
 }
 
 /* Toggle this class - hide and show the popup */
@@ -209,7 +167,7 @@
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
-    height: 120px;
+    height: auto;
     width: 500px;
 }
 

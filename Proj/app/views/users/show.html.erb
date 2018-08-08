@@ -27,7 +27,6 @@
   </div>
 </p>
   <% if User.find(session[:user_id])==@user %>
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 10%; top: 20%; border-color: black;' %> 
   <% end %>
 </div>

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180805082319) do
     t.string "location"
     t.time "time"
     t.date "date"
+    t.string "tipo"
     t.integer "team1"
     t.integer "team2"
     t.datetime "created_at", null: false

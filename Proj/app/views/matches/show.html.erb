@@ -6,6 +6,11 @@
 </p>
 <br>
 <p>
+  <strong>Type:</strong>
+  <%= @match.tipo %>
+</p>
+<br>
+<p>
   <strong>Time:</strong>
   <%= @match.time %>
 </p>
@@ -24,26 +29,34 @@
   <strong>Team2:</strong>
   <% if @match.team2==nil %>
     <b> Cercasi Team sfidante </b><br><br>
+  </h3>
+
     <% if User.find(session[:user_id])[:usname]==Team.find(@match[:team1]).captain %>
     <% else %>
 
+
+
+
+<div align='center'>
+
+
     <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
-  <span class="popuptext" id="myPopup">Questi sono i tuoi Teams!
-    <div class="scatola" align="center">
+  <span class="popuptext" id="myPopup"><i>Questi sono i tuoi Teams!</i>
     <table>
       <% Team.all.each do |element| %>
 
         <h3 style="margin-top: 3px;">
         <% if User.find(session[:user_id])[:usname]==element[:captain] %>
-
-          <tr><%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px;'%>
+        <div class="scatola" align="left">
+          <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -10px; border-radius: 50%;'%>
             <%= form_tag action: 'select_team', controller: 'matches' do %>
-            		<%= submit_tag 'Choose', class: 'btn btn-default', style: 'position: absolute; right: 3px; background-color: green; color: white;' %>
+            		<%= submit_tag 'Choose', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;'  %>
                 <%= text_field_tag :idteam, nil, class: 'hidden', value: element.id %>
                 <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>
             <% end %>
 
-          </tr>
+          </tr><br>
+        </div>
         <% end %>
 
         </h3>
@@ -53,6 +66,10 @@
   </span>
   </div>
   <% end %>
+
+</div>
+
+  <h3 align="center">
 
   <% if User.find(session[:user_id]).usname==Team.find(@match[:team1])[:captain] %>
     <%= form_tag action: 'elimina_match', controller: 'matches' do %>

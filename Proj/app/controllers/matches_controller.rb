@@ -12,6 +12,12 @@ class MatchesController < ApplicationController
   def show
   end
 
+  def show_match
+    idmatch=params['idmatch']
+    redirect_to Match.find(idmatch)
+  end
+
+
   # GET /matches/new
   def new
     @match = Match.new
@@ -95,6 +101,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:location, :time, :date, :team1, :team2)
+      params.require(:match).permit(:location, :time, :tipo, :date, :team1, :team2)
     end
 end
