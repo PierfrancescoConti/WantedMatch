@@ -31,14 +31,18 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
+    if @match[:date] < Date.today or (@match[:date] == Date.today and @match[:time].to_formatted_s(:time) <= Time.now.to_formatted_s(:time))
+      redirect_to new_match_path
+    else
 
-    respond_to do |format|
-      if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
-        format.json { render :show, status: :created, location: @match }
-      else
-        format.html { render :new }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @match.save
+          format.html { redirect_to @match, notice: 'Match was successfully created.' }
+          format.json { render :show, status: :created, location: @match }
+        else
+          format.html { render :new }
+          format.json { render json: @match.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

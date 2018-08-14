@@ -105,6 +105,15 @@ class UsersController < ApplicationController
   end
 
   def searchtm
+    Match.all.each do |element|
+      #se il tempo è passato, il match viene cancellato
+      if element[:date] < Date.today or (element[:date] == Date.today and element[:time].to_formatted_s(:time) <= Time.now.to_formatted_s(:time))
+        element.destroy
+      end
+    end
+
+
+
     campo=params['campo']
     $arrt=[]
     $arrm=[]
