@@ -58,6 +58,11 @@ class TeamsController < ApplicationController
   # DELETE /teams/1.json
   def destroy
     @team.destroy
+    Match.all.each do |element|
+      if @team.id==element[:team1] or @team.id==element[:team2]
+        element.destroy
+      end
+    end
     respond_to do |format|
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
@@ -112,7 +117,13 @@ class TeamsController < ApplicationController
 
   def elimina_team
     idteam=params['idteam']
-    Team.find(idteam).destroy
+    @t=Team.find(idteam)
+    @t.destroy
+    Match.all.each do |element|
+      if @t.id==element[:team1] or @t.id==element[:team2]
+        element.destroy
+      end
+    end
     redirect_to User.find(session[:user_id])
   end
 

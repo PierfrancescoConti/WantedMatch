@@ -1,6 +1,15 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
+  def flash_class(level)
+    case level
+        when :notice then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-error"
+        when :alert then "alert alert-error"
+    end
+end
+
   # GET /matches
   # GET /matches.json
   def index
@@ -32,7 +41,9 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     if @match[:date] < Date.today or (@match[:date] == Date.today and @match[:time].to_formatted_s(:time) <= Time.now.to_formatted_s(:time))
+      flash[:error]="Data non valida"
       redirect_to new_match_path
+
     else
 
       respond_to do |format|
@@ -73,8 +84,8 @@ class MatchesController < ApplicationController
 
   def choose_team
     id=params['id']
-    flash[:notice]="Choosen team"
-    flash[:notice]=Team.find(id).name
+    flash[:success]="Choosen team"
+    flash[:success]=Team.find(id).name
 
   end
 
@@ -85,7 +96,7 @@ class MatchesController < ApplicationController
     @match[:team2]=idteam
     @match.save
     redirect_to User.find(session[:user_id])
-    flash[:notice]="Trovata squadra sfidante!"
+    flash[:success]="Trovata squadra sfidante!"
     #aggiungere google calendar
   end
 

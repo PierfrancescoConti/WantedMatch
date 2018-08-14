@@ -1,5 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<div  align="center">
+<% flash.each do |key, value| %>
+    <div class="isa_success">
+          <%= value %>
+    </div>
+<% end %>
+</div><br>
+<br>
 <p align="center">
   <%= image_tag(@team.logo.to_s, style: 'height: 200px; width: 200px;')%>
 </p>

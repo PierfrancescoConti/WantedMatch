@@ -1,5 +1,13 @@
 <div class="container">
-
+  <div  align="center">
+  <% flash.each do |key, value| %>
+      <div class="isa_error">
+            <%= value %>
+      </div>
+  <% end %>
+  </div>
+  <br>
+  <br>
   <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
     <span class="popuptext" id="myPopup"><i>Questi sono i tuoi Teams!</i>
 

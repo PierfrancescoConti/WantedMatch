@@ -110,6 +110,9 @@ class UsersController < ApplicationController
       if element[:date] < Date.today or (element[:date] == Date.today and element[:time].to_formatted_s(:time) <= Time.now.to_formatted_s(:time))
         element.destroy
       end
+      if element[:team1]==nil
+        element.destroy
+      end
     end
 
 

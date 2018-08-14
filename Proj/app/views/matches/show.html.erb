@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div  align="center">
+<% flash.each do |key, value| %>
+    <div class="isa_success">
+          <%= value %>
+    </div>
+<% end %>
+</div><br>
+<br>
 <h3 align="center">
 <p>
   <strong>Location:</strong>

@@ -1,6 +1,11 @@
 <div class='container' align='center'>
-  <p id="notice"><%= notice %></p>
-
+  <% flash.each do |key, value| %>
+      <div class="isa_success" align="center">
+            <%= value %>
+      </div>
+  <% end %>
+  <br>
+  <br>
 <p>
   <strong>Usname:</strong>
   <%= @user.usname %>
@@ -27,6 +32,6 @@
   </div>
 </p>
   <% if User.find(session[:user_id])==@user %>
-    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 10%; top: 20%; border-color: black;' %> 
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 10%; top: 20%; border-color: black;' %>
   <% end %>
 </div>

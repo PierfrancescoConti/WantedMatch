@@ -1,14 +1,17 @@
 <div class="block" id="block-login">
   <div class="content login">
     <div class="flash">
-      <% flash.each do |type, message| %>
-        <div class="message notice">
-          <p align='center'>
-            <%= message %>
-          </p>
-        </div>
+      <div  align="center">
+      <% flash.each do |key, value| %>
+          <div class="isa_warning">
+                <%= value %>
+          </div>
       <% end %>
+      </div><br>
+      <br>
     </div>
+    <br>
+    <br>
   <%= form_tag do %>
     <fieldset>
       <div class="text-center mb-4">
