@@ -59,8 +59,12 @@ class TeamsController < ApplicationController
   def destroy
     @team.destroy
     Match.all.each do |element|
-      if @team.id==element[:team1] or @team.id==element[:team2]
+      if @team.id==element[:team1]
         element.destroy
+      else
+        if @team.id==element[:team2]
+          element.team2=nil
+        end
       end
     end
     respond_to do |format|
@@ -118,12 +122,19 @@ class TeamsController < ApplicationController
   def elimina_team
     idteam=params['idteam']
     @t=Team.find(idteam)
-    @t.destroy
     Match.all.each do |element|
-      if @t.id==element[:team1] or @t.id==element[:team2]
+      if @t.id==element[:team1]
         element.destroy
+      else
+        if @t.id==element[:team2]
+          flash[:error]= "Questa squadra non può essere eliminata, perchè impegnata in una gara imminente."
+          redirect_to User.find(session[:user_id])
+          return
+        end
       end
     end
+    @t.destroy
+
     redirect_to User.find(session[:user_id])
   end
 

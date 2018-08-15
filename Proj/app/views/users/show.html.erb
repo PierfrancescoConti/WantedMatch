@@ -1,7 +1,7 @@
 <div class='container' align='center'>
   <% flash.each do |key, value| %>
-      <div class="isa_success" align="center">
-            <%= value %>
+      <div class="isa_warning" align="center" style="border-left-style: solid; border-right-style: solid; border-color: #FFBF00;">
+            <b style="margin-left: -20px;">→ <%= value %></b>
       </div>
   <% end %>
   <br>
@@ -19,7 +19,7 @@
   <strong>Teams:</strong>
   <div class='box'>
 
-    <% Team.all.each do |element| %>
+    <% Team.all.sort_by{|e| e[:name]}.each do |element| %>
 
     <h3 style="margin-top: 3px;">
       <% if User.find(session[:user_id])[:usname]==element[:captain] %>

@@ -13,8 +13,8 @@
       <% end %>
       <div  align="center">
       <% flash.each do |key, value| %>
-          <div class="isa_error">
-                <%= value %>
+          <div class="isa_error" style="border-left-style: solid; border-right-style: solid; border-color: #E52B50;">
+            <b style="margin-left: -20px;">→ <%= value %></b>
           </div>
       <% end %>
       </div><br>
