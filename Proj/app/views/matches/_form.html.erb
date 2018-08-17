@@ -49,33 +49,48 @@
 
     <%= form.text_field :team1, id: :match_team1, class: 'hidden'%>
     <div class="field" align="left" style="width: 150px;">
+      <p>
+        <b style="margin-left: -100px; font-size: 16px;">
+          Tipo di partita:
+        </b>
+      </p>
 
         <%= form.radio_button :tipo, 'calcio a 5' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 5</i><br><br>
         <%= form.radio_button :tipo, 'calcio a 7' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 7</i><br><br>
         <%= form.radio_button :tipo, 'calcio a 8' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 8</i><br><br>
         <%= form.radio_button :tipo, 'calcio a 11' %><i style="font-size: 18px; margin-left: 15px;">Calcio a 11</i><br><br>
-      </div><br>
+      </div><br><hr>
 
   <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, id: :match_location %>
-  </div><br>
+    <p>
+      <b style="margin-left: -200px; font-size: 16px;">
+        Dove si terrà la partita?
+      </b>
+    </p>
+    <%= form.text_field :location, id: :match_location, class: 'form-ctrl', placeholder: 'Location' %>
+  </div><br><hr>
+
+  <div class="field" align="center">
+    <p>
+      <b style="margin-left: -200px; font-size: 16px;">
+        Ora:
+      </b>
+    </p>    <input id="match_time" name='match[time]' type="time" class="form-control" style="width: 12%;"/>
+  </div><br><hr>
 
   <div class="field">
-    <%= form.label :time %>
-    <%= form.time_select :time, id: :match_time %>
-  </div><br>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :match_date %>
-  </div>
+    <p>
+      <b style="margin-left: -200px; font-size: 16px;">
+        Data:
+      </b>
+    </p>    <input id="match_date" name='match[date]' type="date" class="form-control" style="width: 13%;"/>
+  </div><br><hr>
 
 
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Posta Annuncio", :class => 'btn btn-login', style: 'width: 40%' %>
   </div>
 <% end %>
 </div>

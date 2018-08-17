@@ -8,9 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style='background-color: #99CBFF;'>
+  <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="position: absolute; top: 0px; left: 0px; width: 100%">
       <%= link_to "WantedMatch",  home_path , :class => "navbar-brand" %>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="nav navbar-nav">
@@ -32,7 +32,7 @@
       </div>
 
       <div class="collapse navbar-collapse" id="navbarCollapse" style="position: absolute; right: 10px; bottom: 2px;">
-        <div class="dropdown"> <!--TEAM-->
+        <div class="dropdown" style="margin-right: 15px;"> <!--TEAM-->
   		  	 <li>
             <%= link_to "=", '#', :class => 'btn btn-default dropbtn link', :style => 'color: gray' %>
           </li>
@@ -48,7 +48,15 @@
 
     </nav>
     <div style= 'margin-top: 50px;'>
-      <%= yield %>
+      <br>
+      <br>
+      <div class="container pnl">
+        <br>
+        <%= yield %>
+        <br>
+        <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
+        <hr>
+      </div>
     </div>
   </body>
 </html>

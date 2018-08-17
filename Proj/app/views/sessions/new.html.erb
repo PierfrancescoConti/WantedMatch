@@ -1,5 +1,5 @@
 <div class="block" id="block-login">
-  <div class="content login">
+  <div class="content login" align="center">
     <div class="flash">
       <div  align="center">
       <% flash.each do |key, value| %>
@@ -15,24 +15,24 @@
   <%= form_tag do %>
     <fieldset>
       <div class="text-center mb-4">
-        <h1 class="mb-3 font-weight-normal">Esegui il login</h1>
+        <h1 class="mb-3">Esegui il login</h1><hr>
       </div>
       <div align=center>
       <div class="form-label-group">
         <h3 class="h3 mb-3 font-weight-normal" style='margin-left: -33%'>Username</h3>
-        <%= text_field_tag :usname, params[:usname], :class => 'form-control', placeholder: "Username", style: 'width: 40%' %>
+        <%= text_field_tag :usname, params[:usname], :class => 'form-ctrl', placeholder: "Username", style: 'width: 40%' %>
       </div>
       <br>
       <div class="form-label-group">
         <h3 class="h3 mb-3 font-weight-normal" style='margin-left: -33%'>Password</h3>
-        <%= password_field_tag :password, params[:password], :class => 'form-control', placeholder: "Password", style: 'width: 40%' %>
+        <%= password_field_tag :password, params[:password], :class => 'form-ctrl', placeholder: "Password", style: 'width: 40%' %>
       </div>
 
       <br>
 
 
       <p>
-        <%= submit_tag 'Sign In', :class => 'btn btn-primary btn-lg btn-block', style: 'width: 40%' %><br>
+        <%= submit_tag 'Sign In', :class => 'btn btn-login', style: 'width: 40%' %><br>
       </p>
     </fieldset>
   <% end %>
@@ -42,9 +42,8 @@
   <br>
   <h3>Non possiedi un account?</h3>
   <br>
-  <%= link_to 'Sign Up', new_user_path, class: 'btn btn-default', style: 'border-width: 1px; border-color: black;' %>
+  <%= link_to 'Sign Up', new_user_path, class: 'btn btn-default', style: 'color: white; border-width: 1px; border-color: black;' %>
   </div>
-  <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
   </div>
   <hr>
 </div>

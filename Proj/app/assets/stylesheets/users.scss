@@ -17,3 +17,20 @@
   left: 0px;
   border-radius: 50px;
 }
+
+.btn-register{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: red;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.btn-register:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}

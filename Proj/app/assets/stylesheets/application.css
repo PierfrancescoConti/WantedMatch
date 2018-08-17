@@ -60,12 +60,23 @@ padding:12px;
 
 /**********************************************/
 
+body{
+	background-image: url("bg1.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
  .hidden{
    position: absolute;
    left: -9999px;
  }
 
-
+.pnl{
+  background-color: #868686;
+  opacity: 0.95;
+}
 
  .box{
    	width: 40%;
