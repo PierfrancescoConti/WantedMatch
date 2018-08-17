@@ -23,6 +23,6 @@ Things you may want to cover:
 
 * ...
 
-a breve autenticazione con facebook con
+a breve autenticazione con google con
 Oauth:
-      https://www.sitepoint.com/rails-authentication-oauth-2-0-omniauth/
+      https://richonrails.com/articles/google-authentication-in-ruby-on-rails
