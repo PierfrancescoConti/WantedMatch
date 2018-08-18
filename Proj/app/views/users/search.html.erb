@@ -1,12 +1,15 @@
-<div class="mainpnl" align="center">
-  <div class="sxpnl">
+<div class="mainpnl">
+  <div class="sxpnl" align="left">
     <br>
-    <h2> Team: </h2><br>
+    <div align="center">
+    <h2><b> Team: </b></h2><br>
+  </div>
     <% $arrt.each do |element| %>
 
     <h4 style="margin-top: 3px;">
-      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%>
-          <%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 50px; margin-left: 300px;')%>
+          <%= element[:name] %>
+          <div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-login', style: 'margin-right: 300px; margin-top: -80px; color: white;'%></div>
     </td>
     <% end %>
     <br><br>
@@ -16,27 +19,35 @@
 
   <div class="dxpnl">
     <br>
-    <h2> Annunci: </h2><br>
+    <div align="center">
+    <h2><b> Annunci: </b></h2><br>
+  </div>
     <% $arrm.each do |element| %>
-      <div class="box" style= "height: 320px; width: 80%;">
-        <h4 style="margin-top: 3px;">
+      <div class="box" style= "height: 320px; width: 80%; margin-left: 11%; margin-top: 5px;">
+        <h4 style= "margin-top: 3px; margin-left: 150px;">
           <table>
-        <%= element[:tipo] %><br>
-        <%= element[:location] %><br>
-        <%= element[:date] %><br>
-        <%= element[:time].to_formatted_s(:time)  %><br>
+        Sarà una partita di <b><%= element[:tipo] %></b><br><br>
+        <b><%= element[:location] %></b><br><br>
+        In data <b><%= element[:date] %> alle ore
+        <%= element[:time].to_formatted_s(:time)  %></b><br><br>
         <%= image_tag(Team.find(element[:team1]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team1]).name %><br>
         <% if element[:team2]==nil %>
-          <b> Cercasi Team sfidante </b><br>
+        <div style="margin-top: 10px;">
+          <b> CERCASI TEAM SFIDANTE </b>
+        </div><br>
         <% else %>
         <%= image_tag(Team.find(element[:team2]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team2]).name %><br>
         <% end %>
 
         <td>
+          <div style="margin-left: 450px; margin-top: -160px;">
           <%= form_tag action: 'show_match', controller: 'matches' do %>
-          		<%= submit_tag 'Show', class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;' %>
+
+          		<%= submit_tag 'Show', class: 'btn btn-default btn-register', style: 'margin-left: 10px; color: white; width: 120px; height: 60px;' %>
+
               <%= text_field_tag :idmatch, nil, class: 'hidden', value: element.id %>
           <% end %>
+          </div>
         </td>
       </table>
       </div>

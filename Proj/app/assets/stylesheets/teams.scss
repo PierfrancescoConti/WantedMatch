@@ -2,6 +2,58 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.namelogobox{
+    width: 500px;
+    height: 350px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    top: 35%;
+    left: 18%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 10%;
+}
+
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    margin-top: -20px;
+    text-align: center;
+    font-size: 27px;
+    font-style: oblique;
+}
+
+
+.logo{
+    width: 150px;
+    height: 150px;
+    border-radius: 30%;
+    border: 3px solid black;
+    position: absolute;
+    background-color: white;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+
+
+
+
+.word
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
 .pnl4{
 	width: 90%;
 	height: 900px;

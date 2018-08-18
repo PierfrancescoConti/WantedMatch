@@ -1,4 +1,4 @@
-<div  align="center">
+<div align="center">
 <% flash.each do |key, value| %>
     <div class="isa_success" style="border-left-style: solid; border-right-style: solid; border-color: #2E8B57;>
       <b style="margin-left: -20px;">→ <%= value %></b>
@@ -6,27 +6,26 @@
 <% end %>
 </div><br>
 <br>
-<p align="center">
-  <%= image_tag(@team.logo.to_s, style: 'height: 200px; width: 200px;')%>
-</p>
+<div class="pnl" style="width: 2000px;position: absolute; left: 80px; margin-top: 6px;">
+
+<div class="namelogobox" style="margin-top: 50px">
+      <%= image_tag(@team.logo.to_s, class: 'logo')%><br><br><br>
+        <h2><b id="word"> Name:</b><i id="word" style="margin-left: 15%;"> <%= @team.name %></i></h2><br>
+        <h2><b id="word"> Captain:</b><i id="word" style="margin-left: 15%;"> <%= @team.captain %></i></h2><br>
+
+</div>
+
 
 <p>
-  <div class="field">
-    <h2><b id="w2"> Name:</b></h2><br>
-    <h2><i id="w" style="margin-left: 15%;"> <%= @team.name %></i></h2><br>
-  </div><br><br><br>
-</p>
-
-<p>
-  <h2><b id="w2"> Members:</b></h2><br>
+  <h2><b id="w2" style="position: absolute; margin-top: 50px; left: 800px;"> Members:</b></h2><br>
   <% if User.find(session[:user_id]).usname!=@team.captain and !(@team[:members].include? User.find(session[:user_id]).usname) and !(@team[:requests].include? User.find(session[:user_id]).usname) %>
     <%= form_tag action: 'send_request', controller: 'teams' do %>
-      <%= submit_tag 'Join Team', class: 'btn btn-default', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px; border-color: black;' %>
+      <%= submit_tag 'Join Team', class: 'btn btn-default btn-register', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px; border-color: black;' %>
       <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
     <% end %>
   <% end %>
 
-  <div class="box" style="height: 300px;width: 50%; margin-left: 25%;">
+  <div class="box" style="height: 400px;width: 30%; margin-left: 40%;margin-top: 70px;">
   <div class="box-inner" style="width: 50%;">
     <table>
       <% @team[:members].each do |element| %>
@@ -41,17 +40,12 @@
   </div>
 </p>
 
-<p>
-  <h2><b id="w2"> Captain:</b></h2><br>
-  <h2><i id="w" style="margin-left: 15%;"> <%= @team.captain %></i></h2><br>
-  </div><br><br><br>
-</p>
 <% if User.find(session[:user_id]).usname==@team.captain %>
 <%= form_tag action: 'form2', controller: 'teams' do %>
-  <%= submit_tag 'Edit Team', class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 30%; color: white; width: 150px;' %>
+  <%= submit_tag 'Edit Team', class: 'btn btn-primary btn-login', style: 'position: absolute; right: 10%; top: 60%; color: white; width: 150px;' %>
   <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 <% end %>
-  <%= link_to 'Create Match', new_match_path, class: 'btn btn-primary', style: 'position: absolute; right: 10%; top: 40%; color: white; width: 150px;' %>
+  <%= link_to 'Create Match', new_match_path, class: 'btn btn-primary btn-login', style: 'position: absolute; right: 10%; top: 80%; color: white; width: 150px;' %>
 <% else %>
   <% if @team[:members].include? User.find(session[:user_id]).usname %>
     <%= form_tag action: 'leave_team', controller: 'teams' do %>
@@ -60,3 +54,10 @@
     <% end %>
   <% end %>
 <% end %>
+<br>
+<br>
+<br>
+<br>
+<p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
+<hr>
+</div>

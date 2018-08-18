@@ -6,6 +6,8 @@
       </div>
   <% end %>
   </div>
+  <div class="container pnl" align="center">
+    <br>
   <br>
   <br>
   <div class="popup" onclick="popup()"><button class="pic-btn"> Scegli Team </button>
@@ -31,7 +33,6 @@
     </span>
   </div>
   <label id="mess"> </label><br>
-</div>
 
 <div align="center">
 <%= form_with(model: match, local: true) do |form| %>
@@ -90,7 +91,11 @@
 
 
   <div class="actions">
-    <%= form.submit "Posta Annuncio", :class => 'btn btn-login', style: 'width: 40%' %>
+    <%= form.submit "Posta Annuncio", :class => 'btn btn-createM', style: 'width: 40%' %>
   </div>
 <% end %>
+</div>
+<br>
+<p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
+<hr>
 </div>

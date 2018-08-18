@@ -6,6 +6,9 @@
   <% end %>
   <br>
   <br>
+  <div class="container pnl" align="center">
+    <br>
+
 <p>
   <strong>Usname:</strong>
   <%= @user.usname %>
@@ -34,4 +37,7 @@
   <% if User.find(session[:user_id])==@user %>
     <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 30%; top: 20%; border-color: black; color: white;' %>
   <% end %>
+  <br>
+  <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
+  <hr>
 </div>

@@ -1,4 +1,4 @@
-
+<div class="pnl" style="height: 820px; width: 2000px; position:absolute; left:50px; top: 85px;">
     <%= form_with(model: team, local: true) do |form| %>
       <% if team.errors.any? %>
         <div id="error_explanation">
@@ -26,9 +26,9 @@
 			<br><br><br>
 			<br><br><br>
 
-      <div class="field">
+      <div class="field" style="position: absolute; left: -180px; margin-top: 180px;">
         <h2><b id="w2"> Nome</b></h2><br>
-        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 50%; margin-top: 2%;' %>
+        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 180%; margin-top: 39%; margin-left: -50px' %>
       </div><br><br>
 
 
@@ -37,15 +37,15 @@
       <%= form.text_field :captain, class: 'hidden', value: User.find(session[:user_id]).usname %>
 
   <div class="actions">
-		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%; position: absolute; bottom: 130px; right:41%'}) %>
+		<%= form.submit('Update',{:class => 'btn btn-primary btn-lg btn-block btn-login', style: 'width: 20%; position: absolute; bottom: 130px; right:30%'}) %>
 
   </div>
 <% end %>
 
 
 <br><br><br>
-<h2><b id="w2"> Membri</b></h2><br>
-<div class="box" style="height: 300px;width: 50%;">
+<h2><b id="w2" style="position: absolute; top: -100px; left: 200px; "> Membri</b></h2><br>
+<div class="box" style="height: 400px;width: 40%; position: absolute; top: 0px; left: 200px; ">
 <div class="box-inner" style="width: 50%;">
 	<table>
 		<% @team[:members].each do |element| %>
@@ -66,8 +66,8 @@
 
 <br>
 
-<h2><b id="w2"> Richieste</b></h2><br>
-<div class="box" style="height: 300px;width: 60%; margin-left: 200px;">
+<h2><b id="w2" style="position: absolute; top: -100px; left: 850px; "> Richieste</b></h2><br>
+<div class="box" style="height: 400px;width: 40%; position: absolute; top: 0px; left: 850px; ">
 <div class="box-inner" style="width: 50%;">
  <table>
 	 <% @team[:requests].each do |element| %>
@@ -99,7 +99,7 @@
 <br><br><br>
 
 <%= form_tag action: 'elimina_team', controller: 'teams' do %>
-		<%= submit_tag 'Elimina', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :idteam, nil, class: 'hidden', value: @team.id %>  <!-- CERCA UTENTI -->
+		<%= submit_tag 'Destroy', class: 'btn btn-delete', style: 'margin-left: 270px; margin-top: 100px; color: white;'%> <%= text_field_tag :idteam, nil, class: 'hidden', value: @team.id %>  <!-- CERCA UTENTI -->
 <% end %>
 <br><br><br>
 </div>
@@ -137,4 +137,5 @@
 		</div>
 	</div>
 
+</div>
 	<div class="main-pnl hidden" align="center">

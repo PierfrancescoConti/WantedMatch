@@ -31,7 +31,7 @@
 
       </div>
 
-      <div class="collapse navbar-collapse" id="navbarCollapse" style="position: absolute; right: 10px; bottom: 2px;">
+      <div class="collapse navbar-collapse" id="navbarCollapse" style="position: absolute; right: 12px; bottom: 2px;">
         <div class="dropdown" style="margin-right: 15px;"> <!--TEAM-->
   		  	 <li>
             <%= link_to "=", '#', :class => 'btn btn-default dropbtn link', :style => 'color: gray' %>
@@ -50,13 +50,9 @@
     <div style= 'margin-top: 50px;'>
       <br>
       <br>
-      <div class="container pnl">
-        <br>
+
         <%= yield %>
-        <br>
-        <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
-        <hr>
-      </div>
+
     </div>
   </body>
 </html>

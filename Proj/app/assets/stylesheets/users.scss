@@ -3,26 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .dxpnl{
-  width: 50%;
-  background-color: green;
+  width: 45%;
+  background-color: #ADDFAD;
+  border: solid 5px;
+  border-color: green;
   position: absolute;
-  right: 0px;
-  border-radius: 50px;
+  right: 2%;
+  opacity: 0.9;
 }
 
 .sxpnl{
-  width: 50%;
-  background-color: red;
+  width: 45%;
+  background-color: #E75480;
+  border: solid 5px;
+  border-color: red;
   position: absolute;
-  left: 0px;
-  border-radius: 50px;
+  left: 2%;
+  opacity: 0.9;
 }
 
 .btn-register{
     border: none;
     outline: none;
     height: 40px;
-    background: red;
+    background: green;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;

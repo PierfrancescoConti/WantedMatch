@@ -184,3 +184,22 @@ body{
   position: absolute;
   left: 0px;
 }
+
+
+
+.btn-delete{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: red;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.btn-delete:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}

@@ -1,4 +1,4 @@
-
+<div class="container">
     <%= form_with(model: team, local: true) do |form| %>
       <% if team.errors.any? %>
         <div id="error_explanation">
@@ -23,7 +23,7 @@
 			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: 'https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg' %> </div>
 
 
-		<div class="main-pnl" align="center">
+		<div class="container pnl" align="center">
 			<br><br><br>
 			<br><br><br>
 
@@ -74,4 +74,9 @@
 			</div>
 		</div>
 	</div>
+  <br>
+  <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
+  <hr>
+</div>
+
 	<div class="main-pnl  hidden" align="center">
