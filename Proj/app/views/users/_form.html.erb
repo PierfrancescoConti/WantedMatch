@@ -43,13 +43,13 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-              <%= form.text_field :usname, id: :user_usname, :class => 'form-control', placeholder: "Username" %>
+              <%= form.text_field :usname, required: true, id: :user_usname, :class => 'form-control', placeholder: "Username" %>
             </div>
             <br>
 
             <div class="mb-3">
               <%= form.label :email, class: 'h3'  %>
-              <%= form.text_field :email, id: :user_email, :class => 'form-control', placeholder: "pippo89@example.com"  %>
+              <%= form.text_field :email, required: true, id: :user_email, :class => 'form-control', placeholder: "pippo89@example.com"  %>
             </div>
             <br>
 

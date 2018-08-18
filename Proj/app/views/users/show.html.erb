@@ -6,27 +6,28 @@
   <% end %>
   <br>
   <br>
-  <div class="container pnl" align="center">
+  <div class="container pnl">
     <br>
-
+    <br>
+<div "container" style="background-color: #ABCDEF; position: absolute; left: 600px; margin-top: 20px; opacity: 0.8; border: solid 5px; border-color: #4682B4; border-radius: 3px; width: 200px; height: 150px; font-size: 20px;"
 <p>
-  <strong>Usname:</strong>
+  <strong><br>Usname:</strong><br>
   <%= @user.usname %>
 </p>
 <p>
-  <strong>Email:</strong>
+  <strong>Email:</strong><br>
   <%= @user.email %>
 </p>
-
+</div>
 <p>
-  <strong>Teams:</strong>
-  <div class='box'>
+  <strong style="font-size: 20px; margin-left: -300px;">Teams:</strong>
+  <div class='box' align="left">
 
     <% Team.all.sort_by{|e| e[:name]}.each do |element| %>
 
     <h3 style="margin-top: 3px;">
       <% if User.find(session[:user_id])[:usname]==element[:captain] %>
-      <td><%= element[:name] %><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+      <td><div style="margin-left: 80px"><%= element[:name] %></div><div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-createM', style: ' margin-right: 80px; margin-top: -70px; color: white;'%></div>
     </td>
     <% end %>
 

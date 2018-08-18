@@ -1,4 +1,4 @@
-<div class="container">
+<div class="pnl" style="height: 650px; width: 1100px; position:absolute; left:25%; top: 85px;">
     <%= form_with(model: team, local: true) do |form| %>
       <% if team.errors.any? %>
         <div id="error_explanation">
@@ -13,33 +13,34 @@
       <% end %>
       <div  align="center">
       <% flash.each do |key, value| %>
-          <div class="isa_error" style="border-left-style: solid; border-right-style: solid; border-color: #E52B50;">
+          <div class="isa_warning" style="border-left-style: solid; border-right-style: solid; border-color: #FFBF00;">
             <b style="margin-left: -20px;">→ <%= value %></b>
           </div>
       <% end %>
       </div><br>
       <br>
 
-			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: 'https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg' %> </div>
+			<div id="a"> <%= form.text_field :logo, id: :team_logo, class: 'hidden', value: @team.logo.to_s %> </div>
 
-
-		<div class="container pnl" align="center">
+		<div class="main-pnl" align="center">
 			<br><br><br>
 			<br><br><br>
 
       <div class="field">
-        <h2><b id="w2"> Nome</b></h2><br>
-        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 50%; margin-top: 2%;' %>
-      </div><br><br><br><br><br><br><br><br>
+        <h2><b id="w2" style="margin-top: -50px; margin-left: 50px"> Name:</b></h2><br>
+        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 70%; margin-top: 2%;' %>
+      </div><br><br><br><br><br>
 
 		  <br><br>
 
       <%= form.text_field :captain, class: 'hidden', value: User.find(session[:user_id]).usname %>
 
   <div class="actions">
-		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%;'}) %><br>
+		<%= form.submit('Continua',{:class => 'btn btn-primary btn-lg btn-block', style: 'width: 20%; margin-left: -150px;'}) %><br>
   </div>
 <% end %>
+<br>
+<p class="mt-5 mb-3 text-muted text-center"><b style="color: white; margin-left: -150px;">© 2017-2018</b></p>
 </div>
 <div class='aSinistra'>
 <div class="foto" name="foto" id="foto">
@@ -74,9 +75,5 @@
 			</div>
 		</div>
 	</div>
-  <br>
-  <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
-  <hr>
-</div>
 
-	<div class="main-pnl  hidden" align="center">
+</div>
