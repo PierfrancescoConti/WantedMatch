@@ -1,0 +1,13 @@
+<div align="center">
+<div style="border: solid 2px; border-color: blue; background-color: gray; opacity: 0.9; width: 30%; margin-top: 60px;">
+  <br>
+  <p style="font-size: 20px;">Le due squadre hanno un giocatore in comune... Continuare?</p><br><br>
+  <%= link_to 'Annulla',  User.find(session[:user_id]), class: 'btn btn-delete', style: 'position: absolute; right: 1090px; top: 236px; color: black;' %>
+  <%= form_tag action: 'select_team2', controller: 'matches' do %>
+      <%= submit_tag 'Conferma', class: 'btn btn-register',  style: 'margin-left: 120px'%>
+      <%= text_field_tag :idteam, nil, class: 'hidden', value: $idt %>
+      <%= text_field_tag :idmatch, nil, class: 'hidden', value: $idm %>
+  <% end%>
+  <br>
+</div>
+</div>

@@ -89,7 +89,31 @@ end
 
   end
 
+  def seleziona_team
+  end
+
   def select_team
+    idmatch=params['idmatch']
+    idteam=params['idteam']
+    @match=Match.find(idmatch)
+    Team.find(@match.team1).members.each do |e1|
+      Team.find(idteam).members.each do |e2|
+        if e1==e2
+          $idm=idmatch
+          $idt=idteam
+          redirect_to seleziona_team_path
+          return
+        end
+      end
+    end
+    @match[:team2]=idteam
+    @match.save
+    redirect_to User.find(session[:user_id])
+    flash[:success]="Trovata squadra sfidante!"
+    #aggiungere google calendar
+  end
+
+  def select_team2
     idmatch=params['idmatch']
     idteam=params['idteam']
     @match=Match.find(idmatch)
@@ -99,6 +123,7 @@ end
     flash[:success]="Trovata squadra sfidante!"
     #aggiungere google calendar
   end
+
 
   def elimina_match
     idmatch=params['idmatch']

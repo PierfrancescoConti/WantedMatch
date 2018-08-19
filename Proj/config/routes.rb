@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   post 'elimina_team', to: 'teams#elimina_team', as: 'elimina_team'
   post 'choose_team', to: 'matches#choose_team', as: 'choose_team'
   post 'select_team', to: 'matches#select_team', as: 'select_team'
+  get 'seleziona_team', to: 'matches#seleziona_team', as: 'seleziona_team'
+  post 'select_team2', to: 'matches#select_team2', as: 'select_team2'
   post 'show_match', to: 'matches#show_match', as: 'show_match'
   post 'elimina_match', to: 'matches#elimina_match', as: 'elimina_match'
   post 'send_request', to: 'teams#send_request', as: 'send_request'

@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require_tree .
 
-
 function settaStemmaB(){
 	var s='<img name="stemma" src="https://upload.wikimedia.org/wikipedia/it/0/07/Fc_barcelona.png" value="Barcellona" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;

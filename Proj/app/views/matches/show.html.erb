@@ -60,9 +60,10 @@
         <div class="scatola" align="left">
           <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -10px; border-radius: 50%;'%>
             <%= form_tag action: 'select_team', controller: 'matches' do %>
-            		<%= submit_tag 'Choose', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;'  %>
+            		<%= submit_tag 'Choose', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;' %>
                 <%= text_field_tag :idteam, nil, class: 'hidden', value: element.id %>
                 <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>
+
             <% end %>
 
           </tr><br>

@@ -33,4 +33,7 @@ class User < ApplicationRecord
    end
  end
 
+validates :usname,
+ :length => { :maximum => 16}
+
 end

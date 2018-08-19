@@ -1,7 +1,7 @@
 <div style="border: solid 2px; border-color: blue;">
   <br>
   Le due squadre hanno un giocatore in comune... Continuare?<br><br>
-  <% link_to "Annulla", roba_path, class: 'btn btn-delete' %>
+  <% link_to "Annulla", Match.find($idm), class: 'btn btn-delete' %>
   <%= form_tag action: 'select_team2', controller: 'matches' do %>
       <%= submit_tag 'Conferma', class: 'btn btn-register'%>
       <%= text_field_tag :idteam, nil, class: 'hidden', value: $idt %>
