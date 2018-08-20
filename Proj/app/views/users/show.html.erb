@@ -6,7 +6,7 @@
   <% end %>
   <br>
   <br>
-  <div class="container pnl">
+  <div class="container pnl" style="background-image: url(http://www.rompicapi.com/wp-content/uploads/2017/10/pallone-da-calcio.png); background-repeat: no-repeat; background-position: 124% 340%;">
     <br>
     <br>
 <div "container" style="background-color: #ABCDEF; position: absolute; left: 600px; margin-top: 20px; opacity: 0.8; border: solid 5px; border-color: #4682B4; border-radius: 3px; width: 200px; height: 150px; font-size: 20px;"
@@ -27,7 +27,7 @@
 
     <h3 style="margin-top: 3px;">
       <% if User.find(session[:user_id])[:usname]==element[:captain] %>
-      <td><div style="margin-left: 80px"><%= element[:name] %></div><div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-createM', style: ' margin-right: 80px; margin-top: -70px; color: white;'%></div>
+      <td><div style="margin-left: 80px; color: white;"><i><%= element[:name] %></i></div><div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-createM', style: ' margin-right: 80px; margin-top: -70px; color: white;'%></div>
     </td>
     <% end %>
 
@@ -36,7 +36,7 @@
   </div>
 </p>
   <% if User.find(session[:user_id])==@user %>
-    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 30%; top: 20%; border-color: black; color: white;' %>
+    <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default', style: 'position: absolute;  right: 30%; top: 20%; border-color: black; color: white; width: 100px;' %>
   <% end %>
   <br>
   <p class="mt-5 mb-3 text-muted text-center"><b style="color: white;">© 2017-2018</b></p>
