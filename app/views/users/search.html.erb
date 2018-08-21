@@ -7,9 +7,9 @@
     <% $arrt.each do |element| %>
 
     <h4 style="margin-top: 3px;">
-      <td> <%= image_tag(element.logo.to_s, style: 'height: 50px; width: 50px; margin-right: 50px; margin-left: 270px;')%>
+      <td> <%= image_tag(element.logo.to_s, style: 'height: 6%; width: 6%; margin-right: 3%; margin-left: 17%;')%>
           <%= element[:name] %>
-          <div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-login', style: 'margin-right: 270px; margin-top: -80px; color: white;'%></div>
+          <div align="right"><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default btn-login', style: 'margin-right: 17%; margin-top: -80px; color: white;'%></div>
     </td>
     <% end %>
     <br><br>
@@ -23,24 +23,24 @@
     <h2><b> Annunci: </b></h2><br>
   </div>
     <% $arrm.each do |element| %>
-      <div class="box" style= "height: 320px; width: 80%; margin-left: 11%; margin-top: 5px;">
-        <h4 style= "margin-top: 3px; margin-left: 150px;">
+      <div class="box" style= "height: 28%; width: 80%; margin-left: 11%; margin-top: 5px;">
+        <h4 style= "margin-top: 3px; margin-left: 10%;">
           <table>
         Sarà una partita di <b><%= element[:tipo] %></b><br><br>
         <b><%= element[:location] %></b><br><br>
         In data <b><%= element[:date] %> alle ore
         <%= element[:time].to_formatted_s(:time)  %></b><br><br>
-        <%= image_tag(Team.find(element[:team1]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team1]).name %>
+        <%= image_tag(Team.find(element[:team1]).logo.to_s, style: 'height: 6%; width: 6%; margin-right: 10px;')%><%= Team.find(element[:team1]).name %>
         <% if element[:team2]==nil %>
         <br><div style="margin-top: 10px;">
           <b style="color:red;"> CERCASI TEAM SFIDANTE </b>
         </div><br>
         <% else %>
-        <b style="margin-left: 13px; margin-right: 13px; font-size: 30px;"> VS </b><%= image_tag(Team.find(element[:team2]).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%><%= Team.find(element[:team2]).name %><br>
+        <b style="margin-left: 13px; margin-right: 13px; font-size: 30px;"> VS </b><%= image_tag(Team.find(element[:team2]).logo.to_s, style: 'height: 6%; width: 6%; margin-right: 10px;')%><%= Team.find(element[:team2]).name %><br>
         <% end %>
 
         <td>
-          <div style="margin-left: 450px; margin-top: -160px;">
+          <div style="margin-left: 75%; margin-top: -160px;">
           <%= form_tag action: 'show_match', controller: 'matches' do %>
 
           		<%= submit_tag 'Show', class: 'btn btn-default btn-register', style: 'margin-left: 10px; color: white; width: 120px; height: 60px;' %>

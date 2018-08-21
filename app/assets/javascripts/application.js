@@ -28,9 +28,9 @@ function settaStemmaRM(){
 }
 
 function settaStemmaJ(){
-	var s='<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Juventus_FC_2017_logo_%28negative%29.jpg" value="Juve" height=200 width=200></img>';
+	var s='<img src="http://bongdachuyennghiep.com/wp-content/uploads/2017/07/juventus-1.png" value="Juve" height=200 width=200></img>';
 	document.getElementById("foto").innerHTML = s;
-	document.getElementById("a").innerHTML = "<input id='team_logo'  name='team[logo]' type='text' class='hidden' value='https://upload.wikimedia.org/wikipedia/commons/f/fa/Juventus_FC_2017_logo_%28negative%29.jpg' %>";
+	document.getElementById("a").innerHTML = "<input id='team_logo'  name='team[logo]' type='text' class='hidden' value='http://bongdachuyennghiep.com/wp-content/uploads/2017/07/juventus-1.png' %>";
 }
 
 function settaStemmaR(){
