@@ -96,6 +96,22 @@ end
     idmatch=params['idmatch']
     idteam=params['idteam']
     @match=Match.find(idmatch)
+    @event = {
+        'summary' => 'WantedMatch',
+        'description' => 'Play a match!',
+        'location' => @match.location,
+        'start' => @match.time,
+        'end' => @match.time }
+
+      client = Google::APIClient.new
+      client.authorization.access_token = current_user.token
+      service = client.discovered_api('calendar', 'v3')
+
+      @set_event = client.execute(:api_method => service.events.insert,
+                              :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
+                              :body => JSON.dump(@event),
+                              :headers => {'Content-Type' => 'application/json'})
+
     Team.find(@match.team1).members.each do |e1|
       Team.find(idteam).members.each do |e2|
         if e1==e2
@@ -108,9 +124,11 @@ end
     end
     @match[:team2]=idteam
     @match.save
-    redirect_to User.find(session[:user_id])
-    flash[:success]="Trovata squadra sfidante!"
+
     #aggiungere google calendar
+
+     redirect_to User.find(session[:user_id])
+     flash[:success]="Trovata squadra sfidante!"
   end
 
   def select_team2

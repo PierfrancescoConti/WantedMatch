@@ -35,8 +35,7 @@ gem 'bcrypt'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 
 # Google API
-gem 'google-api-client', require: 'google/apis/calendar_v3'
-
+gem 'google-api-client', '~> 0.9'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
