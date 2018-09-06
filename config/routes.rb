@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   post 'accept_member', to: 'teams#accept_member', as: 'accept_member'
   post 'form2', to: 'teams#form2', as: 'form2'
 
+  post '/events/:calendar_id', to: 'matches#new_event', as: 'new_event', calendar_id: /[^\/]+/
+
   post 'searchtm', to: 'users#searchtm', as: 'searchtm'
   get 'search', to: 'users#search', as: 'search'
 end

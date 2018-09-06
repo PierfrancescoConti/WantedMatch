@@ -23,6 +23,13 @@ end
 
   def show_match
     idmatch=params['idmatch']
+
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.client_options.application_name = "WantedMatch"
+    service.authorization = current_user.oauth_token
+
+    @calendar_list = service.list_calendar_lists
+
     redirect_to Match.find(idmatch)
   end
 
@@ -92,25 +99,36 @@ end
   def seleziona_team
   end
 
+
+
+  def new_event
+
+    idmatch=params['idmatch']
+    idteam=params['idteam']
+    @match=Match.find(idmatch)
+
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.client_options.application_name = "WantedMatch"
+    service.authorization = current_user.oauth_token
+
+    today = Date.today
+
+    event = Google::Apis::CalendarV3::Event.new({
+      start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
+      summary: 'New event!'
+    })
+
+    service.insert_event(params[:calendar_id], event)
+
+    redirect_to events_url(calendar_id: params[:calendar_id])
+
+  end
+
   def select_team
     idmatch=params['idmatch']
     idteam=params['idteam']
     @match=Match.find(idmatch)
-    @event = {
-        'summary' => 'WantedMatch',
-        'description' => 'Play a match!',
-        'location' => @match.location,
-        'start' => @match.time,
-        'end' => @match.time }
-
-      client = Google::APIClient.new
-      client.authorization.access_token = current_user.token
-      service = client.discovered_api('calendar', 'v3')
-
-      @set_event = client.execute(:api_method => service.events.insert,
-                              :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
-                              :body => JSON.dump(@event),
-                              :headers => {'Content-Type' => 'application/json'})
 
     Team.find(@match.team1).members.each do |e1|
       Team.find(idteam).members.each do |e2|

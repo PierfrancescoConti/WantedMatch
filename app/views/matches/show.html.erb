@@ -74,6 +74,17 @@
       <% end %>
     </table>
     </div>
+
+    <ul>
+      <% @calendar_list.items.each do |calendar| %>
+        <li><%= calendar.summary %> (<%= calendar.id %>)</li>
+      <% end %>
+    </ul>
+
+    <%= form_tag new_event_url do %>
+      <%= submit_tag 'Add to calendar' %>
+    <% end %>
+
   </span>
   </div>
   <% end %>
