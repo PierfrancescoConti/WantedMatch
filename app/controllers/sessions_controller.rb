@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-
-    user = User.from_omniauth(env["omniauth.auth"])
-    if user != nil
+    oa = request.env["omniauth.auth"]
+    if oa != nil
+      user = User.from_omniauth(oa)
       session[:user_id] = user.id
       session[:user_usname] = user.usname
 
