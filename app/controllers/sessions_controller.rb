@@ -4,15 +4,24 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(usname: params[:usname])
-    if user and user.authenticate(params[:password])
 
+    user = User.from_omniauth(env["omniauth.auth"])
+    if user != nil
       session[:user_id] = user.id
       session[:user_usname] = user.usname
-      redirect_to user, alert: "User logged in :D"
 
+      redirect_to user, alert: "User logged in :D"
     else
-      redirect_to login_url, alert: "Invalid user/password combination"
+        user = User.find_by(usname: params[:usname])
+        if user and user.authenticate(params[:password])
+
+          session[:user_id] = user.id
+          session[:user_usname] = user.usname
+          redirect_to user, alert: "User logged in :D"
+
+        else
+          redirect_to login_url, alert: "Invalid user/password combination"
+        end
     end
   end
 

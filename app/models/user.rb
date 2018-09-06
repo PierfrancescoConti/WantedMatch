@@ -10,7 +10,7 @@ class User < ApplicationRecord
   :length => { :minimum => 8},
   :if => lambda{ new_record? || !password.nil? }
 
-  validate :password_complexity
+  validate :password_com\plexity
 
   def password_complexity
     if password.present?
@@ -35,5 +35,15 @@ class User < ApplicationRecord
 
 validates :usname,
  :length => { :maximum => 16}
+
+ def self.from_omniauth(auth)
+   where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+     user.provider = auth.provider
+     user.uid = auth.uid
+     user.usname = auth.info.name
+     user.oauth_token = auth.credentials.token
+     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+     user.save!
+   end
 
 end
