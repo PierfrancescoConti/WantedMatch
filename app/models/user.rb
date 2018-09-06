@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User < ApplicationRecord
   has_secure_password
   has_many :teams
@@ -37,14 +39,26 @@ validates :usname,
  :length => { :maximum => 16}
 
  def self.from_omniauth(auth)
-   where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-     user.provider = auth.provider
-     user.uid = auth.uid
-     user.usname = auth.info.name
-     user.oauth_token = auth.credentials.token
-     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-     user.password = "b4ckd00r_m3_pl1s"
-     user.save!
+   user = User.where(email: auth.info.email).first
+   if user != nil
+    user.provider = auth.provider
+    user.uid = auth.uid
+    user.oauth_token = auth.credentials.token
+    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user.save!
+    return user
+   else
+     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
+       user.provider = auth.provider
+       user.uid = auth.uid
+       user.usname = auth.info.name[0..15]
+       user.email = auth.info.email
+       user.oauth_token = auth.credentials.token
+       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+       user.password = SecureRandom.hex(20)
+       user.save!
+       return user
+     end
    end
   end
 

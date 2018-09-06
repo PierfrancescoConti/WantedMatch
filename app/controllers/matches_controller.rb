@@ -24,12 +24,6 @@ end
   def show_match
     idmatch=params['idmatch']
 
-    service = Google::Apis::CalendarV3::CalendarService.new
-    service.client_options.application_name = "WantedMatch"
-    service.authorization = current_user.oauth_token
-
-    @calendar_list = service.list_calendar_lists
-
     redirect_to Match.find(idmatch)
   end
 
@@ -102,26 +96,26 @@ end
 
 
   def new_event
-
     idmatch=params['idmatch']
-    idteam=params['idteam']
     @match=Match.find(idmatch)
-
+    
     service = Google::Apis::CalendarV3::CalendarService.new
     service.client_options.application_name = "WantedMatch"
     service.authorization = current_user.oauth_token
 
-    today = Date.today
+    cal = service.get_calendar('primary')
 
+    team = Team.find(@match.team1)
+    
     event = Google::Apis::CalendarV3::Event.new({
-      start: Google::Apis::CalendarV3::EventDateTime.new(date: today),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date: today + 1),
-      summary: 'New event!'
+      start: Google::Apis::CalendarV3::EventDateTime.new(date: @match.date),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date: @match.date + 1),
+      summary: ('Match organized by ' + team.name)
     })
 
-    service.insert_event(params[:calendar_id], event)
+    service.insert_event(cal.id, event)
 
-    redirect_to events_url(calendar_id: params[:calendar_id])
+    redirect_to ("https://calendar.google.com/calendar/r/week/" + @match.date.strftime("%Y/%m/%d"))
 
   end
 

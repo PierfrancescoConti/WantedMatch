@@ -75,16 +75,15 @@
     </table>
     </div>
 
-    <ul>
-      <% @calendar_list.items.each do |calendar| %>
-        <li><%= calendar.summary %> (<%= calendar.id %>)</li>
+    <% if User.find(session[:user_id])[:oauth_token]==nil %>
+      <p>You must be signed with Google to add the event to Calendar</p>
+    <% else %>
+      <%= form_tag new_event_url do %>
+        <%= submit_tag 'Add to Google Calendar', :formtarget => "_blank" %>
+        <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>
       <% end %>
-    </ul>
-
-    <%= form_tag new_event_url do %>
-      <%= submit_tag 'Add to calendar' %>
     <% end %>
-
+    
   </span>
   </div>
   <% end %>
