@@ -3,9 +3,9 @@
 one:
   usname: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
-  following: MyString
+  teams: MyString
 
 two:
   usname: MyString
   password_digest: <%= BCrypt::Password.create('secret') %>
-  following: MyString
+  teams: MyString
