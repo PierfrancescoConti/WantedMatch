@@ -37,16 +37,17 @@
       <p>
         <%= submit_tag 'Login', :class => 'btn btn-login', style: 'width: 40%' %><br>
       </p>
-      
+
     </fieldset>
   <% end %>
-  
+
+  <p style="font-size: 18px; margin-top: 5px; margin-bottom: 5px;"> or </p>
   <p>
      <form action="/auth/google_oauth2" method="get">
-       <button class='btn btn-login' style='width: 40%' name="google_login" type="submit">Login with Google</button><br>
+       <button class='btn btn-login' style='width: 40%' name="google_login" type="submit"><b>Login with Google</b></button><br>
      </form>
   </p>
-  
+
   <div align= 'center'>
   <hr>
   <br>
