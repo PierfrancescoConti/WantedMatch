@@ -5,6 +5,7 @@ Given("I am in some page") do
 end
 
 When("I click on Logout") do
+    click_link("=")
     click_link('Logout')
 end
 
