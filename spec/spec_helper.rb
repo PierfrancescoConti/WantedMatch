@@ -11,6 +11,8 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+
+require 'capybara/rspec'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -46,15 +48,6 @@ RSpec.configure do |config|
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
-config.filter_run_when_matching :focus
-config.example_status_persistence_file_path = "spec/examples.txt"
-config.disable_monkey_patching!
-config.default_formatter = 'doc' if config.files_to_run.one?
-config.order = :random
-Kernel.srand config.seed
-# config.profile_examples = 10
-
-
 =begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing
