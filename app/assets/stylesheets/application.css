@@ -146,11 +146,14 @@ body{
   }
 
   .barra{
+    position: relative;
     width: 50%;
+    border-radius: 100px;
+    padding: 3px;
   }
 
 .search-button{
-  margin-left: 2px;
+  margin-left: 6px;
   height: 30px;
   width: 30px;
   color: white;
@@ -159,6 +162,10 @@ body{
   background-image: url(http://linkendata.it/wp-content/uploads/2017/06/icon_search-e1496758160992.png);
   background-size: 105%;
   background-position: 0 -1px;
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+
 }
 
 .scatola{
