@@ -55,12 +55,12 @@
     <table>
       <% Team.all.each do |element| %>
 
-        <h3 style="margin-top: 3px;">
+        <h3 style="margin-top: 9px;margin-bottom: 9px;">
         <% if User.find(session[:user_id])[:usname]==element[:captain] %>
         <div class="scatola" align="left">
-          <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -10px; border-radius: 50%;'%>
+          <tr><div style="font-size: 25px; position:absolute; left: 10px; "><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -5px; height: 30px; padding: 1px; width: 90px;'%>
             <%= form_tag action: 'select_team', controller: 'matches' do %>
-            		<%= submit_tag 'Choose', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;' %>
+            		<%= submit_tag 'Choose', class: 'btn btn-choose', style: 'position: absolute; right: 3px; margin-top: -5px; color: white; border-radius: 20px; height: 30px; padding: 1px; width: 90px;' %>
                 <%= text_field_tag :idteam, nil, class: 'hidden', value: element.id %>
                 <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>
 
@@ -74,7 +74,7 @@
       <% end %>
     </table>
     </div>
-    
+
     <br><br>
     <% if User.find(session[:user_id])[:oauth_token]==nil %>
       <p>You must be signed with Google to add the event to Calendar</p>
@@ -84,7 +84,7 @@
         <%= text_field_tag :idmatch, nil, class: 'hidden', value: @match.id %>
       <% end %>
     <% end %>
-    
+
   </span>
   </div>
   <% end %>

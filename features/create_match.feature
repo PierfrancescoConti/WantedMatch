@@ -1,7 +1,8 @@
 Feature: I want to create a match
 
-Scenario: I'have a registred team
-    Given i'm registraded user
+Scenario: Creation Match
+    Given I am a registered user
     And I have a created team
     When I click create team match button
-    Then I should create a team 
+    And I fill all fields
+    Then I should create a team

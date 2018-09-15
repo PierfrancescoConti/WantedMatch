@@ -45,7 +45,7 @@
   <%= submit_tag 'Edit Team', class: 'btn btn-primary btn-login', style: 'position: absolute; right: 10%; top: 60%; color: white; width: 150px;' %>
   <%= text_field_tag :idteam, nil, class: 'hidden', value: @team[:id] %>
 <% end %>
-  <%= link_to 'Create Match', new_match_path, class: 'btn btn-primary btn-login', style: 'position: absolute; right: 10%; top: 80%; color: white; width: 150px;' %>
+  <%= link_to 'Create Match!', new_match_path, class: 'btn btn-primary btn-login', style: 'position: absolute; right: 10%; top: 80%; color: white; width: 150px;' %>
 <% else %>
   <% if @team[:members].include? User.find(session[:user_id]).usname %>
     <%= form_tag action: 'leave_team', controller: 'teams' do %>

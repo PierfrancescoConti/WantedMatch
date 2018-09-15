@@ -19,3 +19,21 @@
     background: #ffc107;
     color: #000;
 }
+
+.btn-choose{
+  border: none;
+  outline: none;
+  height: 40px;
+  background: green;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+
+.btn-choose:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}

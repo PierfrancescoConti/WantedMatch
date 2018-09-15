@@ -1,3 +1,5 @@
+#require "rails_helper"
+
 Given("I am in a page") do
   visit home_path
 end
@@ -9,4 +11,3 @@ end
 Then("i should see the dropdown menu") do
   expect(page).to have_content("Help")
 end
-

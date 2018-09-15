@@ -1,4 +1,6 @@
-Given("i'm registraded") do
+#require "rails_helper"
+
+Given("I'm registered") do
   visit "users/new"
   fill_in 'Usname', with: 'pippo'
   fill_in 'Email', with: 'pippo@pippo.it'
@@ -18,4 +20,3 @@ end
 Then("I should see the create team page") do
   expect(page).to have_content("Scegli Stemma")
 end
-

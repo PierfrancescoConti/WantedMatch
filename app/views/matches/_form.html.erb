@@ -15,13 +15,13 @@
 
       <table>
         <% Team.all.each do |element| %>
-          <h3 style="margin-top: 3px;">
+          <h3 style="margin-top: 9px;margin-bottom: 9px;">
           <% if User.find(session[:user_id])[:usname]==element[:captain] %>
           <div class="scatola" align="left">
 
-            <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -10px; border-radius: 50%;'%>
+            <tr><div style="font-size: 25px; position:absolute; left: 10px;"><%= element[:name] %></div><%= link_to 'Show', Team.find(element.id), class: 'btn btn-default', style: 'background-color: blue;  color: white; position: absolute; right: 103px; margin-top: -5px; height: 30px; padding: 1px; width: 90px;'%>
 
-              <%= button_tag 'Choose', onclick: 'choose_team(' + element[:id].to_s + ')', class: 'btn btn-default', style: 'position: absolute; right: 3px; margin-top: -10px; background-color: green; color: white; border-radius: 50%;' %>
+              <%= button_tag 'Choose', onclick: 'choose_team(' + element[:id].to_s + ')', class: 'btn btn-choose', style: 'position: absolute; right: 3px; margin-top: -5px; color: white; border-radius: 20px; height: 30px; padding: 1px; width: 90px;' %>
             </tr><br>
           </div>
           <% end %>
