@@ -28,7 +28,7 @@ When("I fill all fields") do
   click_on('Scegli Team')
   expect(page).to have_content('Choose')
   click_on('Choose')
-  fill_in('match[team1]', with: '36')
+  fill_in('match[team1]', with: Team.find_by(name: "fantadora").id)
 
   choose('match[tipo]', option: 'calcio a 5')
   fill_in('Location', with: 'Roma')
