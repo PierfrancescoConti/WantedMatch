@@ -32,7 +32,15 @@
 <br>
 <p>
   <strong>Team1:</strong>
-  <%= image_tag(Team.find(@match.team1).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%> <%= Team.find(@match.team1)[:name] %>
+
+  <% if Team.find(@match.team1).logo.to_s=="" %>
+    <%= image_tag("https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg", style: 'height: 50px; width: 50px; margin-right: 10px;')%>
+  <% else %>
+    <%= image_tag(Team.find(@match.team1).logo.to_s, style: 'height: 50px; width: 50px; margin-right: 10px;')%>
+  <% end %>
+
+
+   <%= Team.find(@match.team1)[:name] %>
 </p>
 <br>
 <p>

@@ -9,7 +9,13 @@
 <div class="pnl" style="width: 95%;position: absolute; left: 2.5%; margin-top: 6px;">
 
 <div class="namelogobox" style="margin-top: 50px">
-      <%= image_tag(@team.logo.to_s, class: 'logo')%><br><br><br>
+      <% if @team.logo.to_s=="" %>
+        <%= image_tag("https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg", class: 'logo')%>
+      <% else %>
+        <%= image_tag(@team.logo.to_s, class: 'logo')%>
+      <% end %>
+
+      <br><br><br>
         <h2><b id="word"> Name:</b><i id="word" style="margin-left: 15%;"> <%= @team.name %></i></h2><br>
         <h2><b id="word"> Captain:</b><i id="word" style="margin-left: 15%;"> <%= @team.captain %></i></h2><br>
 

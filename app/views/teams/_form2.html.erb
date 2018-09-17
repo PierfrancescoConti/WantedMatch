@@ -28,7 +28,7 @@
 
       <div class="field" style="position: absolute; left: -180px; margin-top: 180px;">
         <h2><b id="w2"> Nome</b></h2><br>
-        <%= form.text_field :name, id: :team_name, :class => 'form-control', placeholder: "Nome Team", style: 'width: 180%; margin-top: 39%; margin-left: -50px' %>
+        <%= form.text_field :name, id: :team_name, required: true, :class => 'form-control', placeholder: "Nome Team", style: 'width: 180%; margin-top: 39%; margin-left: -50px' %>
       </div><br><br>
 
 
@@ -105,7 +105,11 @@
 </div>
 <div class='aSinistra'>
 <div class="foto" name="foto" id="foto">
-  <%= image_tag(@team.logo.to_s, style: 'height: 200px; width: 200px;')%>
+  <% if @team.logo.to_s=="" %>
+    <%= image_tag("https://image.freepik.com/icone-gratis/punto-interrogativo_318-52837.jpg", style: 'height: 200px; width: 200px;')%>
+  <% else %>
+    <%= image_tag(@team.logo.to_s, style: 'height: 200px; width: 200px;')%>
+  <% end %>
 		</div>
 		<div class="pnlsf" align="center">
 
